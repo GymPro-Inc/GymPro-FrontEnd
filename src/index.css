@@ -1,0 +1,4 @@
+body {
+  margin: 0; /* Remover margens padrão do corpo */
+  overflow: hidden; /* Evitar barras de rolagem */
+}
