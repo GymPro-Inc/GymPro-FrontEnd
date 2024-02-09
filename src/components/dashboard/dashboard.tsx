@@ -1,57 +1,63 @@
-// Dashboard.js
+// PainelDeControle.tsx
+
 import React, { useState } from 'react';
-import './Dashboard.css';
-import { Basket, Gear, House, SignOut, UsersThree } from '@phosphor-icons/react/dist/ssr';
+import './dashboard.css';
+import { List, Basket, Gear, House, SignOut, UsersThree, PiggyBank } from '@phosphor-icons/react/dist/ssr';
 
-const Dashboard = () => {
-  const [isMenuExpanded, setMenuExpanded] = useState(false);
+interface ItemMenu {
+  icone: JSX.Element;
+  rotulo: string;
+  conteudoPainel: string;
+  isMenu?: boolean;
+}
 
-  const listDashboardMenuItems = [
-    { icon: <House />, label: 'Home' },
-    { icon: <Basket />, label: 'Vendas' },
-    { icon: <UsersThree />, label: 'Pessoas' },
-    { icon: <Gear />, label: 'Configurações' },
-    { icon: <SignOut />, label: 'Sair'}
-  ]
+const PainelDeControle: React.FC = () => {
+  const [menuExpandido, setMenuExpandido] = useState(false);
 
-  const handleMouseEnter = () => {
-    setMenuExpanded(true);
-  };
+  const itensMenu: ItemMenu[] = [
+    { icone: <House />, rotulo: 'Home', conteudoPainel: 'Conteúdo para Home' },
+    { icone: <Basket />, rotulo: 'Vendas', conteudoPainel: 'Conteúdo para Vendas' },
+    { icone: <UsersThree />, rotulo: 'Clientes', conteudoPainel: 'Conteúdo para Clientes' },
+    { icone: <List />, rotulo: '', conteudoPainel: '', isMenu: true },
+    { icone: <PiggyBank />, rotulo: 'Financeiro', conteudoPainel: 'Conteúdo para Financeiro' },
+    { icone: <Gear />, rotulo: 'Configurações', conteudoPainel: 'Conteúdo para Configurações' },
+    { icone: <SignOut />, rotulo: 'Sair', conteudoPainel: 'Conteúdo para Sair' }
+  ];
 
-  const handleMouseLeave = () => {
-    setMenuExpanded(false);
+  const lidarComCliqueBotao = (rotulo: string) => {
+    // Implemente a lógica necessária ao clicar em um botão
+    console.log(`Botão ${rotulo} clicado`);
   };
 
   return (
-    <div className="dashboard-container">
+    <div className="painel-de-controle-container">
       <div
-        className={`menu-container ${isMenuExpanded ? 'expanded' : ''}`}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        className={`menu-container ${menuExpandido ? 'expandido' : ''}`}
+        onMouseEnter={() => setMenuExpandido(true)}
+        onMouseLeave={() => setMenuExpandido(false)}
       >
-        {/* Botões na barra lateral */}
-
         <ul className='lista'>
-          {
-            listDashboardMenuItems.map((menuItem, index) => (
-              <li key={index} className={menuItem.label}>
-                <button className={`icon-button`}>
-                  {menuItem.icon}
-                  {isMenuExpanded && <span>{menuItem.label}</span>}
-                </button>
-              </li>
-            ))
-          }
+          {itensMenu.map((item, index) => (
+            (item?.isMenu && !menuExpandido) || (!item?.isMenu && menuExpandido) ? 
+            <li key={index} className={item.rotulo}>
+              <button
+                className={`botao-icone`}
+                onClick={() => lidarComCliqueBotao(item.rotulo)}
+              >
+                {item.icone}
+                {menuExpandido && <span>{item.rotulo}</span>}
+              </button>
+            </li>
+            : <></>
+          ))}
         </ul>
       </div>
 
-      {/* Conteúdo principal do dashboard aqui */}
-      <div className="main-content">
-        <h1>Dashboard</h1>
-        {/* Outros componentes e conteúdos aqui */}
+      <div className="conteudo-principal">
+        {/* Adicione aqui o conteúdo principal do painel de controle */}
       </div>
     </div>
   );
 };
 
-export default Dashboard;
+export default PainelDeControle;
