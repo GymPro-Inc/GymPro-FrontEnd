@@ -1,114 +1,53 @@
-.painel-de-controle-container {
+/* Sidebar.css */
 
-  position: absolute;
-  top: 0;
-  
-  width: 100vw;
+.menu-slider {
+  width: 100%;
+  height: 100%;
+  background: #88b701;
+  left: 0;
+  color: white;
+}
 
+.menu-slider a {
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
   display: flex;
+  border-radius: 20px;
+  vertical-align: middle;
+  height: 3.75rem;
+}
 
-  flex-direction: row;
+.menu-slider a:hover {
+  border-radius: 20px;
+  color: black;
+}
+
+.MenuItemContainer {
+  width: 75%;
+  display: flex;
   align-items: center;
-  justify-content: center;
+  padding-left: 25%;
+  text-align: center;
+  transition: opacity 1s;
 }
 
-.dashboard-container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+.MenuItemContainer span {
+  padding: 0 10px;
 }
 
-.header {
+.menuItemContainerBaixo {
+  padding-bottom: 50px;
+  margin-top: auto;
+}
+
+.menu-container-esquerda {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  background-color: #1f1f1f;
-  color: #fff;
+  flex-direction: column;
+  height: 100%;
 }
 
 .menu-icon {
-  font-size: 24px;
-  cursor: pointer;
-}
-
-.menu-container {
-  width: 60px;
-  background-color: #1f1f1f;
-  color: #fff;
-  border-radius: 30px;
-  border: 2px solid #8a2be2;
-  transition: width 0.3s;
-  margin-top: 20px;
-
-  display: flex;
-  flex-direction: row;
-
-  align-items: center;
-  justify-content: center;
-
-  padding: 5px; /* Correção na propriedade de padding */
-}
-
-.expandido {
-  width: auto;
-  transition: width 0.3s;
-}
-
-.menu-container ul {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  display: flex;
-}
-
-.menu-container li {
-  margin-bottom: 10px; /* Alteração para espaçamento inferior entre os itens */
-}
-
-.menu-container ul button {
-  background: transparent;
-  border: 2px solid transparent;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  border-radius: 30px;
-  cursor: pointer;
-}
-
-.menu-container ul button:hover span{
-  color: #8a2be2;
-}
-.menu-container ul button:hover svg {
-  fill: #8a2be2;
-}
-
-.menu-container ul button svg {
-  width: 24px;
-  height: 24px;
-  fill: #fff;
-  transition: width 0.3s, height 0.3s, fill 0.3s;
-}
-
-.menu-container.expandido ul button svg {
-  width: 32px;
-  height: 32px;
-}
-
-.menu-container ul button span {
-  margin-left: 10px;
-  color: #fff;
-}
-
-.menu-container.expandido ul button span {
-  display: inline; /* Alteração para exibir o texto quando expandido */
-}
-
-.main-content {
-  flex: 1;
-  padding: 20px;
-  background-color: #2a2a2a;
-  color: #fff;
+  text-align: center;
 }

@@ -1,63 +1,86 @@
-// PainelDeControle.tsx
-
 import React, { useState } from 'react';
 import './dashboard.css';
-import { List, Basket, Gear, House, SignOut, UsersThree, PiggyBank } from '@phosphor-icons/react/dist/ssr';
+import { House, User, Barbell, Users, Gear, SignOut, PiggyBank } from "@phosphor-icons/react";
+import { Link } from 'react-router-dom';
 
-interface ItemMenu {
-  icone: JSX.Element;
-  rotulo: string;
-  conteudoPainel: string;
-  isMenu?: boolean;
-}
+const DashBoard = () => {
+  const [isHovered, setIsHovered] = useState(false);
 
-const PainelDeControle: React.FC = () => {
-  const [menuExpandido, setMenuExpandido] = useState(false);
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
 
-  const itensMenu: ItemMenu[] = [
-    { icone: <House />, rotulo: 'Home', conteudoPainel: 'Conteúdo para Home' },
-    { icone: <Basket />, rotulo: 'Vendas', conteudoPainel: 'Conteúdo para Vendas' },
-    { icone: <UsersThree />, rotulo: 'Clientes', conteudoPainel: 'Conteúdo para Clientes' },
-    { icone: <List />, rotulo: '', conteudoPainel: '', isMenu: true },
-    { icone: <PiggyBank />, rotulo: 'Financeiro', conteudoPainel: 'Conteúdo para Financeiro' },
-    { icone: <Gear />, rotulo: 'Configurações', conteudoPainel: 'Conteúdo para Configurações' },
-    { icone: <SignOut />, rotulo: 'Sair', conteudoPainel: 'Conteúdo para Sair' }
-  ];
-
-  const lidarComCliqueBotao = (rotulo: string) => {
-    // Implemente a lógica necessária ao clicar em um botão
-    console.log(`Botão ${rotulo} clicado`);
+  const handleMouseLeave = () => {
+    setIsHovered(false);
   };
 
   return (
-    <div className="painel-de-controle-container">
-      <div
-        className={`menu-container ${menuExpandido ? 'expandido' : ''}`}
-        onMouseEnter={() => setMenuExpandido(true)}
-        onMouseLeave={() => setMenuExpandido(false)}
-      >
-        <ul className='lista'>
-          {itensMenu.map((item, index) => (
-            (item?.isMenu && !menuExpandido) || (!item?.isMenu && menuExpandido) ? 
-            <li key={index} className={item.rotulo}>
-              <button
-                className={`botao-icone`}
-                onClick={() => lidarComCliqueBotao(item.rotulo)}
-              >
-                {item.icone}
-                {menuExpandido && <span>{item.rotulo}</span>}
-              </button>
-            </li>
-            : <></>
-          ))}
-        </ul>
+    <div
+      className="menu-slider"
+      style={{ width: isHovered ? 250 : 60, transition: "all 0.5s" }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div>
+        <Link to="/">
+          <a className='MenuItemContainer' style={{ scale: isHovered ? 1.1 : 1 }}>
+            <div style={{ opacity: 1 }}>
+              <House size={32} />
+            </div>
+            <span style={{ opacity: isHovered ? 1 : 0 }}>Home</span>
+          </a>
+        </Link>
+        <Link to="/perfil">
+          <a className='MenuItemContainer' style={{ scale: isHovered ? 1.1 : 1 }}>
+            <div style={{ opacity: 1 }}>
+              <User size={32} />
+            </div>
+            <span hidden={!isHovered}>Perfil</span>
+          </a>
+        </Link>
+        <Link to="/treinos">
+          <a className='MenuItemContainer' style={{ scale: isHovered ? 1.1 : 1 }}>
+            <div style={{ opacity: 1 }}>
+              <Barbell size={32} />
+            </div>
+            <span style={{ opacity: isHovered ? 1 : 0 }}>Treinos</span>
+          </a>
+        </Link>
+        <Link to="/clientes">
+          <a className='MenuItemContainer' style={{ scale: isHovered ? 1.1 : 1 }}>
+            <div style={{ opacity: 1 }}>
+              <Users size={32} />
+            </div>
+            <span style={{ opacity: isHovered ? 1 : 0 }}>Clientes</span>
+          </a>
+        </Link>
+        <Link to="/financeiro">
+          <a className='MenuItemContainer' style={{ scale: isHovered ? 1.1 : 1 }}>
+            <div style={{ opacity: 1 }}>
+              <PiggyBank size={32} />
+            </div>
+            <span style={{ opacity: isHovered ? 1 : 0 }}>Financeiro</span>
+          </a>
+        </Link>
       </div>
-
-      <div className="conteudo-principal">
-        {/* Adicione aqui o conteúdo principal do painel de controle */}
-      </div>
+      <Link to="/configuracoes">
+        <a className='MenuItemContainer' style={{ scale: isHovered ? 1.1 : 1 }}>
+          <div style={{ opacity: 1 }}>
+            <Gear size={32} />
+          </div>
+          <span style={{ opacity: isHovered ? 1 : 0 }}>Configurações</span>
+        </a>
+      </Link>
+      <Link to="/sair">
+        <a className='MenuItemContainer' style={{ scale: isHovered ? 1.1 : 1 }}>
+          <div style={{ opacity: 1 }}>
+            <SignOut size={32} />
+          </div>
+          <span style={{ opacity: isHovered ? 1 : 0 }}>Sair</span>
+        </a>
+      </Link>
     </div>
   );
 };
 
-export default PainelDeControle;
+export default DashBoard;
