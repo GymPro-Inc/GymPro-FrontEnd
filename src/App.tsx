@@ -1,14 +1,15 @@
 // App.tsx
-import React from 'react';
-import Dashboard from './components/dashboard/dashboard';
 import './App.css';
+import MenuSlider from './components/menuSlider/menuSlider';
+import TopBar from './components/topBar/TopBar';
 import { Rotas } from './router';
 
 function App() {
   return (
     <div className="app-container">
-        <Dashboard />
-        <Rotas />
+      <MenuSlider />
+      <TopBar />
+      <Rotas />
     </div>
   );
 }

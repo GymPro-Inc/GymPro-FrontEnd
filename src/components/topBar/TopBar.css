@@ -1,0 +1,22 @@
+.topbar{
+    height: 48px;
+    width: 100%;
+    background: gray 5% ;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.imagem-perfil{
+    width: 40px;
+    height: 40px;
+    background: gray;
+    border-radius: 100%;
+}
+
+.perfil-img{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+}
