@@ -1,22 +1,93 @@
 .topbar{
     height: 48px;
     width: 100%;
-    background: gray 5% ;
+    background: transparent;
     display: flex;
-    justify-content: end;
-    align-items: center;
-    padding: 0 20px;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px 20px 0 20px;
 }
 
 .imagem-perfil{
     width: 40px;
     height: 40px;
-    background: gray;
     border-radius: 100%;
+    opacity: 1 ;
+    padding-top: 2%;
 }
 
 .perfil-img{
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     border-radius: 100%;
+    opacity: 1;
+}
+
+.topbar-middle {
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+    background: rgba(255, 255, 255, 0.037);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border:1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.search-input {
+    border-radius: 40px 0 0 40px;
+    width: 500px;
+    height: 80%;
+    background: transparent;
+    color: white;
+    font-size: 16px;
+    outline: none;
+    display: flex;
+    border: none;
+    padding-left: 20px;
+}
+
+.search-input::placeholder {
+    color: white;
+}
+
+.icon-search {
+    width: 20px;
+    height: 100%;
+    margin-right: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.topbar-right {
+    display: flex;
+    background: #88B702;
+    width: 215px;
+    align-items: center;
+    border-radius: 40px;
+    padding-left: 10px;
+    transition: ease-in-out 0.5s;
+    cursor: pointer;
+}
+
+.perfil-info{
+    display: flex;
+    color: white;
+    width: 100%;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    vertical-align: middle;
+    flex-direction: column;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.perfil-name{
+    font-weight: bold;
+}
+
+.perfil-time{
+    
 }

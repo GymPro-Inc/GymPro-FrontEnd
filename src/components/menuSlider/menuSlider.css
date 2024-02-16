@@ -3,9 +3,13 @@
 .menu-slider {
   width: 100vb;
   height: 100vh;
-  background: transparent;
   left: 0;
   color: #88B702;
+  background: rgba(255, 255, 255, 0.037);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
 .menu-slider a {
@@ -39,7 +43,7 @@
 
 .MenuItemContainer:hover {
   color: #88B702;
-  transition: all 0.1s;
+  transition: ease-in-out 0.1s;
 }
 
 .menu-slider-header {
@@ -52,6 +56,7 @@
   width: 100%;
   cursor: pointer;
   border: none;
+  margin-top: 20px;
 }
 
 .menu-selected {

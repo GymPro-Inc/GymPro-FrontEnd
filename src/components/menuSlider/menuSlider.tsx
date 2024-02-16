@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './menuSlider.css';
-import { House, User, Barbell, Gear, SignOut, CurrencyCircleDollar, List, Lockers, Student, Briefcase } from "@phosphor-icons/react";
+import { House, Barbell, Gear, SignOut, CurrencyCircleDollar, List, Lockers, Student, Briefcase } from "@phosphor-icons/react";
 import { MenuItem } from './menuItem';
 import { MenuItensProps } from './menuItem/index';
 
@@ -35,7 +35,7 @@ const MenuSlider = () => {
     {
       id: 1,
       className: 'MenuItemContainer',
-      icon: <House size={32} />,
+      icon: <House size={32} weight="fill"/>,
       isHovered: isHovered,
       isSelected: isSelected,
       link: '/',
@@ -46,7 +46,7 @@ const MenuSlider = () => {
       link: '/treinos',
       isHovered: isHovered,
       isSelected: isSelected,
-      icon: <Barbell size={32} />,
+      icon: <Barbell size={32} weight="fill"/>,
       text: 'Treinos',
       className: 'MenuItemContainer',
       handIsSelected: handIsSelected,
@@ -55,7 +55,7 @@ const MenuSlider = () => {
       link: '/armarios',
       isHovered: isHovered,
       isSelected: isSelected,
-      icon: <Lockers size={32} />,
+      icon: <Lockers size={32} weight="fill"/>,
       text: 'Armarios',
       className: 'MenuItemContainer',
       handIsSelected: handIsSelected,
@@ -64,7 +64,7 @@ const MenuSlider = () => {
       link: '/alunos',
       isHovered: isHovered,
       isSelected: isSelected,
-      icon: <Student size={32} />,
+      icon: <Student size={32} weight="fill"/>,
       text: 'Alunos',
       className: 'MenuItemContainer',
       handIsSelected: handIsSelected,
@@ -73,7 +73,7 @@ const MenuSlider = () => {
       link: '/financeiro',
       isHovered: isHovered,
       isSelected: isSelected,
-      icon: <CurrencyCircleDollar size={32} />,
+      icon: <CurrencyCircleDollar size={32} weight="fill"/>,
       text: 'Financeiro',
       className: 'MenuItemContainer',
       handIsSelected: handIsSelected,
@@ -82,7 +82,7 @@ const MenuSlider = () => {
       link: '/acadamia',
       isHovered: isHovered,
       isSelected: isSelected,
-      icon: <Briefcase size={32} />,
+      icon: <Briefcase size={32} weight="fill"/>,
       text: 'Academia',
       className: 'MenuItemContainer',
       handIsSelected: handIsSelected,
@@ -91,7 +91,7 @@ const MenuSlider = () => {
       link: '/configuracoes',
       isHovered: isHovered,
       isSelected: isSelected,
-      icon: <Gear size={32} />,
+      icon: <Gear size={32} weight="fill"/>,
       text: 'Configurações',
       className: 'MenuItemContainer',
       handIsSelected: handIsSelected,
@@ -100,7 +100,7 @@ const MenuSlider = () => {
       link: '/sair',
       isHovered: isHovered,
       isSelected: isSelected,
-      icon: <SignOut size={32} />,
+      icon: <SignOut size={32} weight="fill"/>,
       text: 'Sair',
       className: 'MenuItemContainer',
       handIsSelected: handIsSelected,
@@ -110,11 +110,11 @@ const MenuSlider = () => {
   return (
     <div
       className="menu-slider"
-      style={{ width: isHovered ? 250 : 60, transition: "ease-in-out 0.5s" }}
+      style={{ width: isHovered ? 300 : 60, transition: "ease-in-out 0.5s" }}
       ref={menuRef}
     >
-      <button className="menu-slider-header" onClick={handleMouseEnter} style={{ color: isHovered ? "#88B702" : 'white', transition: "all 0.5s" }}>
-        <List size={32} />
+      <button className="menu-slider-header" onClick={handleMouseEnter} style={{ color: isHovered ? "#88B702" : 'white', transition: "ease-in-out 0.5s", filter: !isHovered ? "drop-shadow(0 0 10px #fff)": "drop-shadow(0 0 10px #88B702) drop-shadow(0 0 20px #88B702)" }}>
+        <List size={32} weight="fill"/>
       </button>
       {menuItens.map((props) => <MenuItem key={props.id} {...props} />)}
     </div>
