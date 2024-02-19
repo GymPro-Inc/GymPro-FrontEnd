@@ -1,0 +1,8 @@
+.criar-container {
+    position: absolute;
+    top: calc(50% - 400px);
+    left: calc(50% - 350px);
+    width: 100vb;
+    height: 100vh;
+    border-radius: 20px;
+}
