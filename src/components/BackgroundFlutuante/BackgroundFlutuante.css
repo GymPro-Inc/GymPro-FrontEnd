@@ -6,6 +6,7 @@
      animation: brilho 50s infinite alternate ease-in-out;
      filter: blur(120px);
      opacity: 0.5;
+     z-index: -1;
  }
 
  @keyframes brilho {
