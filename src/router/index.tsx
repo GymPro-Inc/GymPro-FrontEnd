@@ -1,5 +1,4 @@
 import { Route, Routes, } from "react-router-dom";
-import Perfil from "../components/screen/perfil/perfil";
 import Criar from "../components/screen/login/Criar";
 import Login from "../components/screen/login/login";
 

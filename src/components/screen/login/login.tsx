@@ -24,12 +24,11 @@ const Login = () => {
                 </label>
                 <label className="links">
                     <Link to='esqueceu'>
-                    <a>Esqueceu a senha?</a>
+                    <label style={{cursor: "pointer"}}>Esqueceu a senha?</label>
                     </Link>
                     <Link to='criar'>
-                    <a>Criar conta</a>
+                    <label style={{cursor: "pointer"}}>Criar conta</label>
                     </Link>
-                    
                 </label>
             </form>
         </div>
