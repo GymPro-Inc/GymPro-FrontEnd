@@ -3,7 +3,7 @@ import './style.css';
 import BackgroundFlutuante from '../../../BackgroundFlutuante/BackgroundFlutuante';
 import { CaretLeft } from '@phosphor-icons/react';
 import { Link } from 'react-router-dom';
-import axiosDefault from '../../../../infra/api';
+import Api from '../../../../infra/api';
 
 const Criar = () => {
     const [nome, setNome] = useState<string>("");
@@ -15,28 +15,41 @@ const Criar = () => {
         if (senha !== confirmarSenha) return alert("As senhas não coincidem");
     }
 
-    const criarConta = async () => {
+    const criarConta = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
         console.log(nome, email, senha, confirmarSenha);
 
         await validarSenha();
 
-        const data = {
+        const dto = {
             nome,
             email,
             senha
         }
 
-        const response = await axiosDefault.post('/criarconta', JSON.stringify(data))
+        try {
+            debugger;
+            const { data } = await Api.post('/usuarios', dto);
 
-        if (response.status !== 200) return alert("Erro ao criar conta");
+            if (data) {
+                return alert("Conta criada com sucesso!");
+            }
 
-        
+        } catch (error: any) {
+
+            if (error.response) {
+                return alert(error.response.data.message);
+            } else {
+                return alert("Erro ao criar conta");
+            }
+        }
     }
 
     return (
         <div className="criar-container">
             <BackgroundFlutuante cor='#fff' />
-            <div className='form-container'>
+            <form className='form-container' onSubmit={criarConta}>
                 <div className='header'>
                     <Link to='/' className='voltar'>
                         <CaretLeft size={40} weight="fill" />
@@ -86,11 +99,13 @@ const Criar = () => {
                             } />
                         </div>
                     </div>
-                    <button onClick={criarConta} type='submit' className='criar-conta'>Criar conta</button>
+                    <button type='submit' className='criar-conta'>Criar conta</button>
                 </div>
-            </div>
+            </form>
         </div>
+
     );
+
 };
 
 export default Criar;
