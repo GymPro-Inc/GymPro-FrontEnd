@@ -5,6 +5,7 @@ import Api from '../../infra/api';
 import { Bounce, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from '../../hooks/useAuth';
+import { GoogleLogo } from '@phosphor-icons/react';
 
 
 const Login = () => {
@@ -47,21 +48,26 @@ const Login = () => {
             <form className='login' onSubmit={logar}>
                 <h2>Login</h2>
                 <label className="imputBox" >
-                    <input required type="email" placeholder="E-mail:" onChange={(event) => {
+                    <input autoComplete='false' required type="email" placeholder="E-mail:" onChange={(event) => {
                         if (event) {
                             setEmail(event.target.value);
                         }
                     }} />
                 </label>
                 <label className="imputBox">
-                    <input required type="password" placeholder="Senha:" onChange={(event) => {
+                    <input autoComplete='false' required type="password" placeholder="Senha:" onChange={(event) => {
                         if (event) {
                             setSenha(event.target.value);
                         }
                     }} />
                 </label>
-                <label className="imputBox">
+                <label className="login-buttons">
                     <input type="submit" value="Entrar" />
+                    <div>
+                        <button className='google-authentication' onClick={() => toast.error("Ainda não implementado")}>
+                            <img className='img-google' src={"https://cdn-teams-slug.flaticon.com/google.jpg"} alt="Google" />
+                        </button>
+                    </div>
                 </label>
                 <label className="links">
                     <Link to='esqueceu'>

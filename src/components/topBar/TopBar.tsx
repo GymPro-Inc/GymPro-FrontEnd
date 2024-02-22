@@ -19,9 +19,16 @@ const TopBar = () => {
                     placeholder="Pesquisar..."
                     className="search-input"
                 />
-                <MagnifyingGlass className="icon-search"/>
+                <MagnifyingGlass className="icon-search" />
             </div>
-            <div></div>
+            <div>
+                <div className="imagem-perfil" onClick={onClickPerfil}>
+                    <div className='perfil-img'>
+                        <img src="https://www.w3schools.com/howto/img_avatar.png" alt="perfil" />
+                    </div>
+                </div>
+
+            </div>
         </div>
     );
 };

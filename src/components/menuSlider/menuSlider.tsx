@@ -91,16 +91,7 @@ const MenuSlider = () => {
       text: 'Academia',
       className: 'MenuItemContainer',
       handIsSelected: handIsSelected,
-    }, {
-      id: 8,
-      link: '/configuracoes',
-      isHovered: isHovered,
-      isSelected: isSelected,
-      icon: <Gear size={32} weight="fill" />,
-      text: 'Configurações',
-      className: 'MenuItemContainer',
-      handIsSelected: handIsSelected,
-    },
+    }
   ];
 
   return (
@@ -116,6 +107,16 @@ const MenuSlider = () => {
         {menuItens.map((props) => <MenuItem key={props.id} {...props} />)}
       </div>
       <footer>
+      <MenuItem
+          id={8}
+          link={'/Configurações'}
+          isHovered={isHovered}
+          isSelected={isSelected}
+          icon={<Gear size={32} weight="fill" />}
+          text={'Configurações'}
+          className={'MenuItemContainerButton'}
+          handIsSelected={handIsSelected}
+        />
         <MenuItem
           id={9}
           link={'/'}

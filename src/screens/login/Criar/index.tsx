@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './style.css';
 import BackgroundFlutuante from '../../../components/BackgroundFlutuante/BackgroundFlutuante';
 import { CaretLeft } from '@phosphor-icons/react';
-import { Link, redirect, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Api from '../../../infra/api';
 import { toast } from 'react-toastify';
 
@@ -11,6 +11,8 @@ const Criar = () => {
     const [email, setEmail] = useState<string>("");
     const [senha, setSenha] = useState<string>("");
     const [confirmarSenha, setConfirmarSenha] = useState<string>("");
+
+    const navigate = useNavigate();
 
     const criarConta = (e: React.FormEvent<HTMLFormElement>) => {
         try {
@@ -29,10 +31,9 @@ const Criar = () => {
                 pending: 'Criando conta...',
                 success: 'Conta criada com sucesso!',
                 error: 'Erro ao criar conta'
+            }).then(() => {
+                navigate('/');
             });
-
-            redirect('/');
-
         } catch (error) {
         }
     }

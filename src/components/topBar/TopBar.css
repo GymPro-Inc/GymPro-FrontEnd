@@ -4,16 +4,19 @@
     background: transparent;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    padding: 10px 20px 0 20px;
+    align-items: center;
+    padding-right: 10px;
 }
 
 .imagem-perfil{
-    width: 40px;
-    height: 40px;
+    width: 100%;
+    height: 100%;
     border-radius: 100%;
     opacity: 1 ;
     padding-top: 2%;
+    background: #88B702;
+    overflow: hidden;
+    cursor: pointer;
 }
 
 .perfil-img{
@@ -21,10 +24,11 @@
     height: 35px;
     border-radius: 100%;
     opacity: 1;
+    display: flex;
 }
 
 .topbar-middle {
-    height: 80%;
+    height: 65%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -61,17 +65,6 @@
     cursor: pointer;
 }
 
-.topbar-right {
-    display: flex;
-    background: #88B702;
-    width: 215px;
-    align-items: center;
-    border-radius: 40px;
-    padding-left: 10px;
-    transition: ease-in-out 0.5s;
-    cursor: pointer;
-}
-
 .perfil-info{
     display: flex;
     color: white;
@@ -82,12 +75,4 @@
     flex-direction: column;
     text-align: center;
     text-transform: uppercase;
-}
-
-.perfil-name{
-    font-weight: bold;
-}
-
-.perfil-time{
-    
 }

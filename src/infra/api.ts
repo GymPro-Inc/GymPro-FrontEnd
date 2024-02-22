@@ -15,11 +15,7 @@ applyErrorHandler(Api);
 
 criaLogDev(Api, 'ApiGeral');
 
-
 export default Api;
 
-// import api from "../infra/api"
 
-// const { data } = await api.post('/login', {
-// });
 
