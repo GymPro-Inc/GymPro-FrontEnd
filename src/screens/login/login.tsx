@@ -24,25 +24,16 @@ const Login = () => {
             const { data } = await Api.post('/auth/login', dto);
 
             if (data) {
-                toast.success("Login relizado com sucesso!", {
-                    position: "top-center",
-                    theme: "dark"
-                });
+                toast.success("Login relizado com sucesso!")
             }
 
             await handleSaveUserLogged(data);
 
         } catch (error: any) {
             if (error.response) {
-                toast.error(`${error.response.data}`, {
-                    position: "top-center",
-                    theme: "dark"
-                });
+                toast.error(`${error.response.data}`);
             } else {
-                toast.error("Erro ao realizar login!", {
-                    position: "top-center",
-                    theme: "dark"
-                });
+                toast.error("Erro ao realizar login!");
             }
         }
     }

@@ -14,10 +14,12 @@ function App() {
   const { userLogged } = useAuth()
   return (
     <>
-      <ToastContainer theme='dark' transition={Zoom} />
+      <ToastContainer theme='dark' position='top-right' transition={Zoom} />
       <Rotas />
     </>
   );
 }
 
 export default App;
+
+

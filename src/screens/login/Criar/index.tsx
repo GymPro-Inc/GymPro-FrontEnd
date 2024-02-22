@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import './style.css';
 import BackgroundFlutuante from '../../../components/BackgroundFlutuante/BackgroundFlutuante';
 import { CaretLeft } from '@phosphor-icons/react';
-import { Link } from 'react-router-dom';
+import { Link, redirect, useNavigate } from 'react-router-dom';
 import Api from '../../../infra/api';
+import { toast } from 'react-toastify';
 
 const Criar = () => {
     const [nome, setNome] = useState<string>("");
@@ -11,31 +12,28 @@ const Criar = () => {
     const [senha, setSenha] = useState<string>("");
     const [confirmarSenha, setConfirmarSenha] = useState<string>("");
 
-        const criarConta = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-
-        if (senha !== confirmarSenha) return alert("As senhas não coincidem");
-
-        const dto = {
-            nome,
-            email,
-            senha
-        }
-
+    const criarConta = (e: React.FormEvent<HTMLFormElement>) => {
         try {
-            const { data } = await Api.post('/auth/register', dto);
+            e.preventDefault();
 
-            if (data) {
-                return alert("Conta criada com sucesso!");
+            if (senha !== confirmarSenha) return toast.error("As senhas não coincidem");
+
+            const dto = {
+                nome,
+                email,
+                senha
             }
 
-        } catch (error: any) {
+            toast.promise(
+                Api.post('/auth/register', dto), {
+                pending: 'Criando conta...',
+                success: 'Conta criada com sucesso!',
+                error: 'Erro ao criar conta'
+            });
 
-            if (error.response) {
-                return alert(error.response.data.message);
-            } else {
-                return alert("Erro ao criar conta");
-            }
+            redirect('/');
+
+        } catch (error) {
         }
     }
 
