@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './style.css';
-import BackgroundFlutuante from '../../../BackgroundFlutuante/BackgroundFlutuante';
+import BackgroundFlutuante from '../../../components/BackgroundFlutuante/BackgroundFlutuante';
 import { CaretLeft } from '@phosphor-icons/react';
 import { Link } from 'react-router-dom';
-import Api from '../../../../infra/api';
+import Api from '../../../infra/api';
 
 const Criar = () => {
     const [nome, setNome] = useState<string>("");
@@ -11,16 +11,10 @@ const Criar = () => {
     const [senha, setSenha] = useState<string>("");
     const [confirmarSenha, setConfirmarSenha] = useState<string>("");
 
-    const validarSenha = async () => {
-        if (senha !== confirmarSenha) return alert("As senhas não coincidem");
-    }
-
-    const criarConta = async (e: React.FormEvent<HTMLFormElement>) => {
+        const criarConta = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        console.log(nome, email, senha, confirmarSenha);
-
-        await validarSenha();
+        if (senha !== confirmarSenha) return alert("As senhas não coincidem");
 
         const dto = {
             nome,
@@ -29,8 +23,7 @@ const Criar = () => {
         }
 
         try {
-            debugger;
-            const { data } = await Api.post('/usuarios', dto);
+            const { data } = await Api.post('/auth/register', dto);
 
             if (data) {
                 return alert("Conta criada com sucesso!");

@@ -97,7 +97,7 @@ body {
 }
 
 .login-container .login input::placeholder {
-    color : #88B702;
+    color: #88B702;
 }
 
 .login-container .login input[type="submit"] {
@@ -121,13 +121,15 @@ body {
     transition: .3s;
     background: transparent;
     border: none;
-    cursor: pointer;;
+    cursor: pointer;
+    ;
 }
 
 @keyframes rotate {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }

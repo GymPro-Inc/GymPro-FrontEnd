@@ -3,12 +3,17 @@ import './menuSlider.css';
 import { House, Barbell, Gear, SignOut, CurrencyCircleDollar, List, Lockers, Student, Briefcase } from "@phosphor-icons/react";
 import { MenuItem } from './menuItem';
 import { MenuItensProps } from './menuItem/index';
+import { useAuth } from '../../hooks/useAuth';
+
 
 const MenuSlider = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [isSelected, setIsSelected] = useState<number>();
 
+  
   const menuRef = useRef(null);
+
+  const { handleSaveUserLogged } = useAuth();
 
   const handleMouseEnter = () => {
     setIsHovered(!isHovered);
@@ -104,6 +109,9 @@ const MenuSlider = () => {
       text: 'Sair',
       className: 'MenuItemContainer',
       handIsSelected: handIsSelected,
+      onClick: () => {
+        handleSaveUserLogged()
+      }
     }
   ];
 

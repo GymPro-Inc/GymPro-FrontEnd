@@ -4,22 +4,19 @@ import MenuSlider from './components/menuSlider/menuSlider';
 import TopBar from './components/topBar/TopBar';
 import { Rotas } from './router';
 import BackgroundFlutuante from './components/BackgroundFlutuante/BackgroundFlutuante';
-import Login from './components/screen/login/login';
+import Login from './screens/login/login';
+import { ToastContainer, Zoom } from 'react-toastify';
+import { useState, useEffect } from 'react';
+import { useAuth } from './hooks/useAuth';
+import { Route } from 'react-router-dom';
 
 function App() {
-
-  const isLogged = false;
-
+  const { userLogged } = useAuth()
   return (
-    !isLogged ? <Rotas /> :
-      <div className='backgorund'>
-        <BackgroundFlutuante />
-        <div className="app-container">
-          <MenuSlider />
-          <TopBar />
-          <Rotas />
-        </div>
-      </div>
+    <>
+      <ToastContainer theme='dark' transition={Zoom} />
+      <Rotas />
+    </>
   );
 }
 
