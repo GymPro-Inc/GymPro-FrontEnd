@@ -49,7 +49,7 @@ const Login = () => {
             <form className='login' onSubmit={logar}>
                 <h2>Login</h2>
                 <label className="imputBox" >
-                    <input autoComplete='false' required type="email" placeholder="E-mail:" onChange={(event) => {
+                    <input autoComplete='false' required type="text" placeholder="E-mail:" onChange={(event) => {
                         if (event) {
                             setEmail(event.target.value);
                         }

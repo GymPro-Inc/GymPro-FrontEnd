@@ -115,7 +115,7 @@ const MenuSlider = () => {
       <footer>
         <MenuItem
           id={8}
-          link={'/Configurações'}
+          link={'/configuracoes'}
           isHovered={isHovered}
           isSelected={isSelected}
           icon={<Gear size={32} weight="fill" />}
