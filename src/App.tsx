@@ -1,14 +1,9 @@
 // App.tsx
 import './App.css';
-import MenuSlider from './components/menuSlider/menuSlider';
-import TopBar from './components/topBar/TopBar';
 import { Rotas } from './router';
-import BackgroundFlutuante from './components/BackgroundFlutuante/BackgroundFlutuante';
-import Login from './screens/login/login';
 import { Slide, ToastContainer, Zoom } from 'react-toastify';
-import { useState, useEffect } from 'react';
 import { useAuth } from './hooks/useAuth';
-import { Route } from 'react-router-dom';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 function App() {
   const { userLogged } = useAuth()

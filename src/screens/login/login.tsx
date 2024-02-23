@@ -6,6 +6,7 @@ import { Bounce, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from '../../hooks/useAuth';
 import { GoogleLogo } from '@phosphor-icons/react';
+import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
 
 
 const Login = () => {
@@ -42,6 +43,7 @@ const Login = () => {
 
     return (
         <div className="login-container">
+            <GoogleOAuthProvider clientId="187186328176-aj8t1h9vqt0cq8v483o1682jksngk0m9.apps.googleusercontent.com">
             <i></i>
             <i></i>
             <i></i>
@@ -64,9 +66,17 @@ const Login = () => {
                 <label className="login-buttons">
                     <input type="submit" value="Entrar" />
                     <div>
-                        <button className='google-authentication' onClick={() => toast.error("Ainda não implementado")}>
-                            <img className='img-google' src={"https://cdn-teams-slug.flaticon.com/google.jpg"} alt="Google" />
-                        </button>
+                        {/* <button className='google-authentication' onClick={() => toast.error("Ainda não implementado")}> */}
+                            <GoogleLogin
+                                onSuccess={credentialResponse => {
+                                    console.log(credentialResponse);
+                                }}
+                                onError={() => {
+                                    console.log('Login Failed');
+                                }}
+                            />;
+                            {/* <img className='img-google' src={"https://cdn-teams-slug.flaticon.com/google.jpg"} alt="Google" /> */}
+                        {/* </button> */}
                     </div>
                 </label>
                 <label className="links">
@@ -78,6 +88,7 @@ const Login = () => {
                     </Link>
                 </label>
             </form>
+            </GoogleOAuthProvider>
         </div>
     );
 }
