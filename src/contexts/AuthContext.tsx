@@ -1,6 +1,5 @@
 import { createContext, useEffect, useState } from "react";
 import Api from "../infra/api";
-import App from "../App";
 
 interface UserLogged {
     token: string;

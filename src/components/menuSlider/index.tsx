@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './menuSlider.css';
-import { House, Barbell, Gear, SignOut, CurrencyCircleDollar, List, Lockers, Student, Briefcase } from "@phosphor-icons/react";
+import './style.css';
+import { House, Barbell, Gear, SignOut, CurrencyCircleDollar, List, Lockers, Student, Briefcase, Calendar } from "@phosphor-icons/react";
 import { MenuItem } from './menuItem';
 import { MenuItensProps } from './menuItem/index';
 import { useAuth } from '../../hooks/useAuth';
@@ -63,11 +63,11 @@ const MenuSlider = () => {
       handIsSelected: handIsSelected,
     }, {
       id: 4,
-      link: '/armarios',
+      link: '/calendario',
       isHovered: isHovered,
       isSelected: isSelected,
-      icon: <Lockers size={32} weight="fill" />,
-      text: 'Armarios',
+      icon: <Calendar  size={32} weight="fill" />,
+      text: 'Calendario',
       className: 'MenuItemContainer',
       handIsSelected: handIsSelected,
     }, {
