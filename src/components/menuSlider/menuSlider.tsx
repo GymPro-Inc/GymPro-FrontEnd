@@ -4,6 +4,7 @@ import { House, Barbell, Gear, SignOut, CurrencyCircleDollar, List, Lockers, Stu
 import { MenuItem } from './menuItem';
 import { MenuItensProps } from './menuItem/index';
 import { useAuth } from '../../hooks/useAuth';
+import { googleLogout } from '@react-oauth/google';
 
 
 const MenuSlider = () => {
@@ -14,6 +15,11 @@ const MenuSlider = () => {
   const menuRef = useRef(null);
 
   const { handleSaveUserLogged } = useAuth();
+
+  const Sair = () => {
+    googleLogout();
+    handleSaveUserLogged();
+  }
 
   const handleMouseEnter = () => {
     setIsHovered(!isHovered);
@@ -107,7 +113,7 @@ const MenuSlider = () => {
         {menuItens.map((props) => <MenuItem key={props.id} {...props} />)}
       </div>
       <footer>
-      <MenuItem
+        <MenuItem
           id={8}
           link={'/Configurações'}
           isHovered={isHovered}
@@ -126,7 +132,7 @@ const MenuSlider = () => {
           text={'Sair'}
           className={'MenuItemContainerButton'}
           handIsSelected={handIsSelected}
-          onClick={() => handleSaveUserLogged()}
+          onClick={() => Sair()}
         />
       </footer>
     </div>

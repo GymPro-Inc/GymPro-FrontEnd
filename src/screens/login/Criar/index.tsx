@@ -23,7 +23,9 @@ const Criar = () => {
             const dto = {
                 nome,
                 email,
-                senha
+                senha,
+                role: "USER",
+                origem: "1"
             }
 
             toast.promise(

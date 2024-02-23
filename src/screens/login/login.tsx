@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from '../../hooks/useAuth';
 import { GoogleLogo } from '@phosphor-icons/react';
 import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode';
 
 
 const Login = () => {
@@ -44,50 +45,76 @@ const Login = () => {
     return (
         <div className="login-container">
             <GoogleOAuthProvider clientId="187186328176-aj8t1h9vqt0cq8v483o1682jksngk0m9.apps.googleusercontent.com">
-            <i></i>
-            <i></i>
-            <i></i>
-            <form className='login' onSubmit={logar}>
-                <h2>Login</h2>
-                <label className="imputBox" >
-                    <input autoComplete='false' required type="email" placeholder="E-mail:" onChange={(event) => {
-                        if (event) {
-                            setEmail(event.target.value);
-                        }
-                    }} />
-                </label>
-                <label className="imputBox">
-                    <input autoComplete='false' required type="password" placeholder="Senha:" onChange={(event) => {
-                        if (event) {
-                            setSenha(event.target.value);
-                        }
-                    }} />
-                </label>
-                <label className="login-buttons">
-                    <input type="submit" value="Entrar" />
-                    <div>
-                        {/* <button className='google-authentication' onClick={() => toast.error("Ainda não implementado")}> */}
+                <i></i>
+                <i></i>
+                <i></i>
+                <form className='login' onSubmit={logar}>
+                    <h2>Login</h2>
+                    <label className="imputBox" >
+                        <input autoComplete='false' required type="email" placeholder="E-mail:" onChange={(event) => {
+                            if (event) {
+                                setEmail(event.target.value);
+                            }
+                        }} />
+                    </label>
+                    <label className="imputBox">
+                        <input autoComplete='false' required type="password" placeholder="Senha:" onChange={(event) => {
+                            if (event) {
+                                setSenha(event.target.value);
+                            }
+                        }} />
+                    </label>
+                    <label className="login-buttons">
+                        <input type="submit" value="Entrar" />
+                        <div style={{display: "flex"}}>
                             <GoogleLogin
-                                onSuccess={credentialResponse => {
-                                    console.log(credentialResponse);
+                                shape='circle'
+                                type='icon'
+                                onSuccess={async credentialResponse => {
+                                    const token = credentialResponse.credential?.toString(),
+                                        decoded : any = await jwtDecode(token!);
+
+                                    const dto = {
+                                        email: decoded.email,
+                                        senha: decoded.sub,
+                                        nome: decoded.name,
+                                        origem: 1,
+                                        role: "USER"
+                                    }
+
+                                    try {
+                                        const { data } = await Api.post('/auth/loginexterno', dto);
+
+                                        if (data) {
+                                            toast.success("Login relizado com sucesso!")
+                                        }
+
+                                        await handleSaveUserLogged(data);
+
+                                    } catch (error: any) {
+                                        if (error.response) {
+                                            toast.error(`${error.response.data}`);
+                                        } else {
+                                            toast.error("Erro ao realizar login!");
+                                        }
+                                    }
+
                                 }}
                                 onError={() => {
-                                    console.log('Login Failed');
+                                    toast.error("Erro ao realizar login!");
                                 }}
-                            />;
-                            {/* <img className='img-google' src={"https://cdn-teams-slug.flaticon.com/google.jpg"} alt="Google" /> */}
-                        {/* </button> */}
-                    </div>
-                </label>
-                <label className="links">
-                    <Link to='esqueceu'>
-                        <label style={{ cursor: "pointer" }}>Esqueceu a senha?</label>
-                    </Link>
-                    <Link to='criar'>
-                        <label style={{ cursor: "pointer" }}>Criar conta</label>
-                    </Link>
-                </label>
-            </form>
+                            />
+                        </div>
+                    </label>
+                    <label className="links">
+                        <Link to='esqueceu'>
+                            <label style={{ cursor: "pointer" }}>Esqueceu a senha?</label>
+                        </Link>
+                        <Link to='criar'>
+                            <label style={{ cursor: "pointer" }}>Criar conta</label>
+                        </Link>
+                    </label>
+                </form>
             </GoogleOAuthProvider>
         </div>
     );

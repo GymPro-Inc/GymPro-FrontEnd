@@ -4,9 +4,14 @@ import './Loading.css';
 const LoadingScreen: React.FC = () => {
 
     return (
-        <div style={{background: "green"}}>
-            <h1 style={{color: "white"}}>Carregando...</h1>
-        </div>
+        <>
+            <div className='aneis'>
+                <div className='anel'></div>
+                <div className='anel'></div>
+                <div className='anel'></div>
+            </div>
+            <label style={{color: "white"}}className='loading'>Carregando...</label>
+        </>
     );
 };
 
