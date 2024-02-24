@@ -61,7 +61,7 @@ const Criar = () => {
                             }} />
                         </div>
                         <div className='campoTexto'>
-                            <label>EMAIL</label>
+                            <label>E-MAIL</label>
                             <input required type="email" placeholder="email@exemplo.com" onChange={(event) => {
                                 if (event) {
                                     setEmail(event.target.value);

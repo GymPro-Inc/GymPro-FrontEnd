@@ -2,7 +2,7 @@ import { ReactNode } from "react"
 import "./style.css"
 import BackgroundFlutuante from "../../components/BackgroundFlutuante/BackgroundFlutuante"
 import MenuSlider from "../../components/menuSlider"
-import TopBar from "../../components/topBar/TopBar"
+import TopBar from "../../components/topBar"
 
 
 interface props {

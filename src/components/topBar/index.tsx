@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { MagnifyingGlass } from "@phosphor-icons/react";
-import './topBar.css';
+import './style.css';
 
 const TopBar = () => {
 
