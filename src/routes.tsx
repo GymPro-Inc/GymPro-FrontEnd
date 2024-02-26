@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { useAuth } from "./hooks/useAuth";
 import LoadingScreen from "./screens/loading/Loading";
 import { Home } from "./screens/home";
-import Calandar from "./components/calendar";
+import Calendario from "./components/calendar";
 import Esqueceu from "./screens/login/Esqueceu";
 
 function MainRoutes() {
@@ -43,7 +43,7 @@ function MainRoutes() {
   return (
     <Home>
       <Routes>
-        <Route path="/calendario" element={<Calandar />} />
+        <Route path="/calendario" element={<Calendario />} />
       </Routes>
     </Home>
   )
