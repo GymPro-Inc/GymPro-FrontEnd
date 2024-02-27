@@ -1,62 +1,68 @@
 import React, { useState } from 'react';
-import { format, startOfMonth, subMonths, addMonths, eachWeekOfInterval, eachDayOfInterval, isSameMonth, isSameWeek, isToday } from 'date-fns';
+import { format, startOfMonth, subMonths, addMonths, eachWeekOfInterval, addWeeks, addDays, subWeeks, subDays, } from 'date-fns';
 import { pt } from 'date-fns/locale';
-import './style.css';
+import './visualizacao.css';
 import { CaretLeft, CaretRight } from '@phosphor-icons/react';
+import Mensal from './visualizacao/mensal';
+import Semanal from './visualizacao/semanal';
+
+type Visualizacao = 'mensal' | 'semanal' | 'diario';
 
 const Calendario: React.FC = () => {
     const [currentDate, setCurrentDate] = useState(new Date());
+    const [vizualizacao, setVizualizacao] = useState<Visualizacao>('mensal');
 
     const inicioDoMes = startOfMonth(currentDate);
     const finalDoMes = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
     const semanasDoMes = eachWeekOfInterval({ start: inicioDoMes, end: finalDoMes }, { weekStartsOn: 1 }).slice(0, 5);
-    const mesDia = format(currentDate, 'MMMM, yyyy', { locale: pt });
+    const mesDia = vizualizacao==='diario' ? format(currentDate, 'dd, MMMM, yyyy', { locale: pt }) : format(currentDate, 'MMMM, yyyy', { locale: pt });
 
-    const retrocederMes = () => {
-        setCurrentDate(subMonths(currentDate, 1));
+    const retroceder = () => {
+        if(vizualizacao==='mensal') setCurrentDate(subMonths(currentDate, 1));
+        if(vizualizacao==='semanal') setCurrentDate(subWeeks(currentDate, 1));
+        if(vizualizacao==='diario') setCurrentDate(subDays(currentDate, 1));
     };
 
-    const avancarMes = () => {
-        setCurrentDate(addMonths(currentDate, 1));
+    const avancar = () => {
+        if(vizualizacao==='mensal') setCurrentDate(addMonths(currentDate, 1));
+        if(vizualizacao==='semanal') setCurrentDate(addWeeks(currentDate, 1));
+        if(vizualizacao==='diario') setCurrentDate(addDays(currentDate, 1));
     };
 
     const irParaDiaAtual = () => {
         setCurrentDate(new Date());
     };
 
+    const mudarVisualizacao = (novaVizualizacao: Visualizacao) => {
+        setVizualizacao(novaVizualizacao)
+    }
+
     return (
         <div className="background-calendario">
-            <div className="navegacao">
-                <div className='localizacao'>
-                <button onClick={retrocederMes}>
-                    <CaretLeft size={42} />
-                </button>
-                <span className='diaMes'>{mesDia.charAt(0).toUpperCase() + mesDia.slice(1)}</span>
-                <button onClick={avancarMes}>
-                    <CaretRight size={42} />
-                </button>
+            <div className='header'>
+                <div className="navegacao">
+                    <div className='localizacao'>
+                        <button onClick={retroceder}>
+                            <CaretLeft size={42} />
+                        </button>
+                        <span className='diaMes'>{mesDia.charAt(0).toUpperCase() + mesDia.slice(1)}</span>
+                        <button onClick={avancar}>
+                            <CaretRight size={42} />
+                        </button>
+                    </div>
+                    <div className='botao-hoje'>
+                        <button onClick={irParaDiaAtual}>Hoje</button>
+                    </div>
                 </div>
-                <div className='botao-hoje'>
-                    <button onClick={irParaDiaAtual}>Hoje</button>
-                </div>
-            </div>
-            <div className="calendario">
-                <div className="semanas">
-                    {semanasDoMes.map((semana, indiceSemana) => (
-                        <div key={indiceSemana} className="semana">
-                            {eachDayOfInterval({ start: semana, end: new Date(semana.getFullYear(), semana.getMonth(), semana.getDate() + 6) }).map((dia, indiceDia) => (
-                                <div
-                                    key={indiceDia}
-                                    className={`dia ${isSameMonth(dia, currentDate) ? 'mes-atual' : 'outro-mes'} ${isSameWeek(dia, currentDate) ? 'semana-atual' : ''} ${isToday(dia) ? 'hoje' : ''}`}
-                                >
-                                    <span className="numero-do-dia">{format(dia, 'dd')}</span>
-                                    <span className="dia-da-semana">{format(dia, 'EEEE', { locale: pt })}</span>
-                                </div>
-                            ))}
-                        </div>
-                    ))}
+                <div className='visualizacao'>
+                    <button onClick={() => mudarVisualizacao('mensal')}>Mensal</button>
+                    <button onClick={() => mudarVisualizacao('semanal')}>Semanal</button>
+                    <button onClick={() => mudarVisualizacao('diario')}>Diário</button>
                 </div>
             </div>
+            {vizualizacao === 'mensal' && Mensal(semanasDoMes, currentDate)}
+            {vizualizacao === 'semanal' && Semanal(currentDate)}
+            {/* {vizualizacao === 'diario' && Diario()} */}
         </div>
     );
 };

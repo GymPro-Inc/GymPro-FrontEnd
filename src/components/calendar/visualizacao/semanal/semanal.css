@@ -1,0 +1,64 @@
+.calendario-semanal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+  height: 100%;
+  width: 90%;
+}
+
+.semanal {
+  display: flex;
+  height: 100%;
+  gap: 20px;
+  width: 100%;
+}
+
+.dia-semanal {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+  height: 100%;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 20px;
+  cursor: pointer;
+  flex-direction: column;
+}
+
+.dia-semanal:hover {
+  color: #88B702;
+  background-color: transparent;
+  transition: ease-in-out 0.3s;
+  border: 1px solid #88B702;
+}
+
+.numero-do-dia-semanal {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.dia-da-semana-semanal {
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  font-weight: lighter;
+}
+
+.semana-atual-semanal {
+  background-color: #fff;
+}
+
+.hoje-semanal {
+  background-color: #88B702;
+  color: #fff;
+  border: 1px solid #88B702;
+}
+
+.outra-semana {
+  color: gray;
+  border: 1px solid gray;
+  cursor: auto;
+  font-weight: bold;
+}

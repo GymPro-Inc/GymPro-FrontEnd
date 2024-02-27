@@ -1,0 +1,136 @@
+.background-calendario {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+    height: 100%;
+    margin: 20px auto;
+    background: rgba(174, 174, 174, 0.064);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border-radius: 20px;
+    overflow: scroll;
+  }
+
+  .background-calendario::-webkit-scrollbar {
+    background: transparent;
+  }
+
+  .background-calendario::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .background-calendario::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+
+  .background-calendario::-webkit-scrollbar-corner{
+    background: transparent;
+  }
+  
+  .calendario {
+    display: grid;
+    grid-template-columns: repeat(7, 2fr);
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .visualizacao button {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 14px;
+    height: 100%;
+    width: 100px;
+
+  }
+
+  .visualizacao button:hover {
+    color: #88B702;
+    transition: all 0.3s;
+  }
+  
+  .navegacao {
+    min-height: 50px;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    /* Cor do texto ajustada */
+    background: rgba(174, 174, 174, 0.064);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border-radius: 20px;
+    vertical-align: middle;
+  }
+  
+  .navegacao button {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 14px;
+    height: 100%;
+    width: 100px;
+  }
+  
+  .navegacao button:hover {
+    color: #88B702;
+    background-color: rgba(174, 174, 174, 0.2);
+    transition: all 0.3s;
+  }
+
+  .botoes-navegacao span {
+    font-size: 22px;
+  }
+  
+  .botao-hoje {
+    display: flex;
+    background: #88B702;
+    color: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 100px;
+    height: 48px;
+    border: 1px solid #88B702;
+  }
+  
+  .botao-hoje:hover {
+    color: #88B702;
+    background: black;
+    transition: ease-in-out 0.3s;
+  }
+  
+  .localizacao {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+  }
+  
+  .diaMes {
+    width: 205px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    margin: 20px auto;
+  }
