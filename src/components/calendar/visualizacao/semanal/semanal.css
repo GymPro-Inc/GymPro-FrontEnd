@@ -2,9 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px auto;
   height: 100%;
-  width: 90%;
+  width: 100%;
 }
 
 .semanal {

@@ -3,38 +3,22 @@
     align-items: center;
     flex-direction: column;
     width: 90%;
-    height: 100%;
-    margin: 20px auto;
+    height: 90%;
+    margin-top: 20px;
     background: rgba(174, 174, 174, 0.064);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.18);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     border-radius: 20px;
-    overflow: scroll;
   }
 
-  .background-calendario::-webkit-scrollbar {
-    background: transparent;
-  }
-
-  .background-calendario::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  .background-calendario::-webkit-scrollbar-thumb {
-    background: transparent;
-  }
-
-  .background-calendario::-webkit-scrollbar-corner{
-    background: transparent;
-  }
-  
   .calendario {
     display: grid;
     grid-template-columns: repeat(7, 2fr);
     gap: 10px;
     align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100%;
   }
@@ -134,3 +118,23 @@
     justify-content: center;
     margin: 20px auto;
   }
+
+
+  .dashboard-calendario {
+    margin: 20px auto;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 0 90px;
+    overflow: scroll;
+  }
+
+  .dashboard-calendario::-webkit-scrollbar {
+    background: transparent;
+  }
+
+  .dashboard-calendario::-webkit-scrollbar-corner {
+    background: transparent;
+  } 
+
+  

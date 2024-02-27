@@ -9,7 +9,28 @@ import { googleLogout } from '@react-oauth/google';
 
 const MenuSlider = () => {
   const [isHovered, setIsHovered] = useState(false);
-  const [isSelected, setIsSelected] = useState<number>();
+  const [isSelected, setIsSelected] = useState<number | null>(null);
+
+  useEffect(() => {
+    verificarRota();
+  }, []);
+
+  const verificarRota = () => {
+    const url = window.location.pathname;
+    if (url === '/') {
+      setIsSelected(1);
+    } else if (url === '/treinos') {
+      setIsSelected(3);
+    } else if (url === '/calendario') {
+      setIsSelected(4);
+    } else if (url === '/alunos') {
+      setIsSelected(5);
+    } else if (url === '/financeiro') {
+      setIsSelected(6);
+    } else if (url === '/acadamia') {
+      setIsSelected(7);
+    }
+  }
 
 
   const menuRef = useRef(null);

@@ -5,7 +5,7 @@ export interface MenuItensProps {
     id: number,
     link: string;
     isHovered: boolean;
-    isSelected?: number;
+    isSelected?: number | null;
     icon: ReactNode;
     text: string;
     className: string;
