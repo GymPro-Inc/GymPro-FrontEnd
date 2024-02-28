@@ -1,140 +1,194 @@
 .background-calendario {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 90%;
-    height: 90%;
-    margin-top: 20px;
-    background: rgba(174, 174, 174, 0.064);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    border-radius: 20px;
-  }
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 90%;
+  height: 90%;
+  margin-top: 20px;
+  background: rgba(174, 174, 174, 0.064);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  border-radius: 20px;
+}
 
-  .calendario {
-    display: grid;
-    grid-template-columns: repeat(7, 2fr);
-    gap: 10px;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-  }
+.calendario {
+  display: grid;
+  grid-template-columns: repeat(7, 2fr);
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
 
-  .visualizacao button {
-    background-color: transparent;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    border-radius: 20px;
-    font-size: 14px;
-    height: 100%;
-    width: 100px;
+.visualizacao button {
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+  font-size: 14px;
+  height: 100%;
+  width: 100px;
+}
 
-  }
+.visualizacao button:hover {
+  color: #88B702;
+  transition: all 0.3s;
+}
 
-  .visualizacao button:hover {
-    color: #88B702;
-    transition: all 0.3s;
-  }
-  
-  .navegacao {
-    min-height: 50px;
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    /* Cor do texto ajustada */
-    background: rgba(174, 174, 174, 0.064);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    border-radius: 20px;
-    vertical-align: middle;
-  }
-  
-  .navegacao button {
-    background-color: transparent;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    border-radius: 20px;
-    font-size: 14px;
-    height: 100%;
-    width: 100px;
-  }
-  
-  .navegacao button:hover {
-    color: #88B702;
-    background-color: rgba(174, 174, 174, 0.2);
-    transition: all 0.3s;
-  }
+.navegacao {
+  min-height: 50px;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: rgba(174, 174, 174, 0.064);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  border-radius: 20px;
+  vertical-align: middle;
+}
 
-  .botoes-navegacao span {
-    font-size: 22px;
-  }
-  
-  .botao-hoje {
-    display: flex;
-    background: #88B702;
-    color: #fff;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 14px;
-    width: 100px;
-    height: 48px;
-    border: 1px solid #88B702;
-  }
-  
-  .botao-hoje:hover {
-    color: #88B702;
-    background: black;
-    transition: ease-in-out 0.3s;
-  }
-  
-  .localizacao {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-  }
-  
-  .diaMes {
-    width: 205px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  }
+.navegacao button {
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+  font-size: 14px;
+  height: 100%;
+  width: 100px;
+}
 
-  .header {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: auto;
-    justify-content: center;
-    margin: 20px auto;
-  }
+.navegacao button:hover {
+  color: #88B702;
+  background-color: rgba(174, 174, 174, 0.2);
+  transition: all 0.3s;
+}
+
+.botoes-navegacao span {
+  font-size: 22px;
+}
+
+.botao-hoje {
+  display: flex;
+  background: #88B702;
+  color: #fff;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  width: 100px;
+  height: 48px;
+  border: 1px solid #88B702;
+}
+
+.botao-hoje:hover {
+  color: #88B702;
+  background: black;
+  transition: ease-in-out 0.3s;
+}
+
+.localizacao {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
+
+.diaMes {
+  width: 205px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  justify-content: center;
+  margin: 20px auto;
+}
 
 
-  .dashboard-calendario {
-    margin: 20px auto;
-    display: flex;
-    width: 100%;
-    height: 100%;
-    padding: 0 90px;
-    overflow: scroll;
-  }
+.dashboard-calendario {
+  margin: 20px auto;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 0 90px;
+  overflow: scroll;
+}
 
-  .dashboard-calendario::-webkit-scrollbar {
-    background: transparent;
-  }
+.dashboard-calendario::-webkit-scrollbar {
+  background: transparent;
+}
 
-  .dashboard-calendario::-webkit-scrollbar-corner {
-    background: transparent;
-  } 
+.dashboard-calendario::-webkit-scrollbar-corner {
+  background: transparent;
+}
 
-  
+.funil {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  cursor: pointer;
+  color: white;
+  flex-direction: row;
+}
+
+.iconeFiltro:hover {
+  color: #88B702;
+  transition: all 0.3s;
+}
+
+.modalFiltro {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  width: 300px;
+  height: 300px;
+  top: 82px;
+  right: 102px;
+  cursor: auto;
+  background: rgba(28, 28, 28, 0.900);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  border-radius: 20px;
+}
+
+.inputHoras {
+  display: flex;
+  width: 100%;
+  height: auto;
+  margin: 20px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.inputHora {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100px;
+  height: 40px;
+  border: 1px solid white;
+  border-radius: 20px;
+  background: transparent;
+  color: white;
+}
