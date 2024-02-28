@@ -10,7 +10,7 @@ import InputMask from 'react-input-mask';
 
 type Visualizacao = 'mensal' | 'semanal' | 'diario';
 
-const Calendario: React.FC = () => {
+const Calendario = () => {
     const [currentDate, setCurrentDate] = useState(new Date()),
         [vizualizacao, setVizualizacao] = useState<Visualizacao>('mensal'),
         [startHour, setStartHour] = useState('08:00'),
@@ -109,7 +109,6 @@ const Calendario: React.FC = () => {
                     <button style={{ color: vizualizacao === 'mensal' ? '#88B702' : '' }} onClick={() => mudarVisualizacao('mensal')}>Mensal</button>
                     <button style={{ color: vizualizacao === 'semanal' ? '#88B702' : '' }} onClick={() => mudarVisualizacao('semanal')}>Semanal</button>
                     <button style={{ color: vizualizacao === 'diario' ? '#88B702' : '' }} onClick={() => mudarVisualizacao('diario')}>Diário</button>
-
                 </div>
                 <div className="funil">
                     <div className='iconeFiltro'>
@@ -138,9 +137,9 @@ const Calendario: React.FC = () => {
                 </div>
             </div>
             <div className='dashboard-calendario'>
-                {vizualizacao === 'mensal' && Mensal(semanasDoMes, currentDate)}
-                {vizualizacao === 'semanal' && Semanal(currentDate)}
-                {vizualizacao === 'diario' && Diario(currentDate, dateRange)}
+                {vizualizacao === 'mensal' && <Mensal semanasDoMes={semanasDoMes} currentDate={currentDate} />}
+                {vizualizacao === 'semanal' && <Semanal currentDate={currentDate} />}
+                {vizualizacao === 'diario' && <Diario currentDate={currentDate} timeInterval={dateRange} />}
             </div>
         </div>
     );

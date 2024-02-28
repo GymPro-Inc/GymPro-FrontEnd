@@ -2,7 +2,11 @@ import { format, startOfWeek, addDays, isSameWeek, isToday } from 'date-fns';
 import { pt } from 'date-fns/locale';
 import './semanal.css';
 
-const Semanal = (currentDate : Date ) => {
+interface SemanalProps {
+  currentDate: Date;
+}
+
+const Semanal = ({ currentDate } : SemanalProps ) => {
   const diasDaSemana = [];
   let startDay = startOfWeek(currentDate);
   

@@ -4,9 +4,15 @@ import { pt } from 'date-fns/locale';
 import './mensal.css';
 import Evento from '../../modal/evento';
 
-const Mensal = (semanasDoMes: Date[], currentDate: Date) => {
-    const [selectedDate, setSelectedDate] = useState(null);
+interface MensalProps {
+    semanasDoMes: Date[];
+    currentDate: Date;
+}
 
+const Mensal = ({ semanasDoMes, currentDate }: MensalProps ) => {
+
+    const [selectedDate, setSelectedDate] = useState(null);
+    
     const handleDayClick = (day : any) => {
         setSelectedDate(day);
     };

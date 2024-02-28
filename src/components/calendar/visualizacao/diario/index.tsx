@@ -3,11 +3,15 @@ import { format, isToday } from 'date-fns';
 import { pt } from 'date-fns/locale';
 import './diario.css';
 
-const Diario = ( currentDate : Date, timeInterval : Date[]) => {
+interface DiarioProps {
+  currentDate: Date;
+  timeInterval: Date[];
+}
+
+const Diario = ({ currentDate, timeInterval }: DiarioProps) => {
   return (
     <div className="calendario-diario">
       <div className={`dia-diario ${isToday(currentDate) ? 'hoje-diario' : ''}`}>
-        {/* Adicione uma verificação para garantir que a data seja válida antes de formatar */}
         {currentDate ? (
           <>
             <span className="numero-do-dia-diario">{format(currentDate, 'dd')}</span>
