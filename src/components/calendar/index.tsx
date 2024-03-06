@@ -1,12 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { format, startOfMonth, subMonths, addMonths, eachWeekOfInterval, addWeeks, addDays, subWeeks, subDays, eachDayOfInterval } from 'date-fns';
 import { pt } from 'date-fns/locale';
-import './visualizacao.css';
 import { CaretLeft, CaretRight, Funnel } from '@phosphor-icons/react';
 import Mensal from './visualizacao/mensal';
 import Semanal from './visualizacao/semanal';
 import Diario from './visualizacao/diario';
-import InputMask from 'react-input-mask';
 
 type Visualizacao = 'mensal' | 'semanal' | 'diario';
 
@@ -89,54 +87,52 @@ const Calendario = () => {
     }, []);
 
     return (
-        <div className="background-calendario">
-            <div className='header'>
-                <div className='navegacao'>
-                    <div className='localizacao'>
-                        <button onClick={retroceder}>
-                            <CaretLeft size={42} />
-                        </button>
-                        <span className='diaMes'>{mesDia.charAt(0).toUpperCase() + mesDia.slice(1)}</span>
-                        <button onClick={avancar}>
-                            <CaretRight size={42} />
-                        </button>
-                    </div>
-                    <div className='botao-hoje'>
-                        <button onClick={irParaDiaAtual}>Hoje</button>
-                    </div>
+        <div className="bg-gray-90 backdrop-filter backdrop-blur-md bg-opacity-70 border border-white border-opacity-30 p-8 rounded-lg w-5/6 h-5/6 mt-20">
+            <div className='header flex items-center justify-between mb-8'>
+                <div className='navegacao flex items-center w-full justify-center mb-8'>
+                    <button onClick={retroceder} className='mr-2'>
+                        <CaretLeft size={6} />
+                    </button>
+                    <span className='diaMes text-lg font-bold'>{mesDia.charAt(0).toUpperCase() + mesDia.slice(1)}</span>
+                    <button onClick={avancar} className='ml-2'>
+                        <CaretRight size={6} />
+                    </button>
                 </div>
-                <div className='visualizacao'>
-                    <button style={{ color: vizualizacao === 'mensal' ? '#88B702' : '' }} onClick={() => mudarVisualizacao('mensal')}>Mensal</button>
-                    <button style={{ color: vizualizacao === 'semanal' ? '#88B702' : '' }} onClick={() => mudarVisualizacao('semanal')}>Semanal</button>
-                    <button style={{ color: vizualizacao === 'diario' ? '#88B702' : '' }} onClick={() => mudarVisualizacao('diario')}>Diário</button>
-                </div>
-                <div className="funil">
-                    <div className='iconeFiltro'>
-                        <Funnel size={32} onClick={onHoverFilterHandler} ref={filter} />
-                    </div>
-                    {onHoverFilter && <div className="modalFiltro" ref={filterRef}>
-                        <div className='inputHoras'>
-                            <label>Inicio:</label>
-                            <InputMask
-                                mask="99:99"
-                                placeholder="00:00"
-                                value={startHour}
-                                onChange={handleStartHourChange}
-                                className='inputHora'
-                            />
-                            <label>Fim:</label>
-                            <InputMask
-                                mask="99:99"
-                                placeholder="00:00"
-                                value={endHour}
-                                onChange={handleEndHourChange}
-                                className='inputHora'
-                            />
-                        </div>
-                    </div>}
+                <div className='botao-hoje flex items-center justify-center bg-green-500 text-white rounded-full px-4 py-2 mb-4'>
+                    <button onClick={irParaDiaAtual}>Hoje</button>
                 </div>
             </div>
-            <div className='dashboard-calendario'>
+            <div className='visualizacao mb-4 flex justify-center space-x-4'>
+                <button className={`text-white bg-transparent border-none cursor-pointer rounded-full font-size-14 h-full w-32 focus:outline-none focus:ring focus:border-blue-300 ${vizualizacao === 'mensal' ? 'text-green-500 bg-green-200' : ''}`} onClick={() => mudarVisualizacao('mensal')}>Mensal</button>
+                <button className={`text-white bg-transparent border-none cursor-pointer rounded-full font-size-14 h-full w-32 focus:outline-none focus:ring focus:border-blue-300 ${vizualizacao === 'semanal' ? 'text-green-500 bg-green-200' : ''}`} onClick={() => mudarVisualizacao('semanal')}>Semanal</button>
+                <button className={`text-white bg-transparent border-none cursor-pointer rounded-full font-size-14 h-full w-32 focus:outline-none focus:ring focus:border-blue-300 ${vizualizacao === 'diario' ? 'text-green-500 bg-green-200' : ''}`} onClick={() => mudarVisualizacao('diario')}>Diário</button>
+            </div>
+            <div className="funil flex items-center justify-end">
+                <div className='iconeFiltro cursor-pointer' onClick={onHoverFilterHandler}>
+                    <Funnel size={6} />
+                </div>
+                {onHoverFilter && <div className="modalFiltro absolute flex items-center flex-row justify-center text-center w-72 h-72 top-12 right-16 bg-opacity-90 backdrop-blur-md border border-white border-opacity-30 shadow-lg rounded-2xl">
+                    <div className='inputHoras'>
+                        <label className='text-white'>Inicio:</label>
+                        <InputMask
+                            mask="99:99"
+                            placeholder="00:00"
+                            value={startHour}
+                            onChange={handleStartHourChange}
+                            className='inputHora border-1 border-white rounded-full h-10 px-4 text-white bg-transparent'
+                        />
+                        <label className='text-white'>Fim:</label>
+                        <InputMask
+                            mask="99:99"
+                            placeholder="00:00"
+                            value={endHour}
+                            onChange={handleEndHourChange}
+                            className='inputHora border-1 border-white rounded-full h-10 px-4 text-white bg-transparent'
+                        />
+                    </div>
+                </div>}
+            </div>
+            <div className='dashboard-calendario overflow-auto'>
                 {vizualizacao === 'mensal' && <Mensal semanasDoMes={semanasDoMes} currentDate={currentDate} />}
                 {vizualizacao === 'semanal' && <Semanal currentDate={currentDate} />}
                 {vizualizacao === 'diario' && <Diario currentDate={currentDate} timeInterval={dateRange} />}

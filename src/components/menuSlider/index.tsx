@@ -4,7 +4,6 @@ import { House, Barbell, Gear, SignOut, CurrencyCircleDollar, List, Lockers, Stu
 import { MenuItem } from './menuItem';
 import { MenuItensProps } from './menuItem/index';
 import { useAuth } from '../../hooks/useAuth';
-import { googleLogout } from '@react-oauth/google';
 
 
 const MenuSlider = () => {
@@ -38,7 +37,6 @@ const MenuSlider = () => {
   const { handleSaveUserLogged } = useAuth();
 
   const Sair = () => {
-    googleLogout();
     handleSaveUserLogged();
   }
 

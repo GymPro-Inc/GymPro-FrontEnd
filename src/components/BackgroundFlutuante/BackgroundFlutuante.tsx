@@ -54,6 +54,8 @@ const BackgroundFlutuante = ({ cor = "#88B702" }: BackgroundFlutuanteProps) => {
                     left: bolha.left,
                     background: cor,
                     boxShadow: `0 0 10px ${cor}, 0 0 20px ${cor}, 0 0 30px ${cor}`,
+                    overflow: 'hidden',
+                    zIndex: -1,
                 }}
             ></div>
         ))

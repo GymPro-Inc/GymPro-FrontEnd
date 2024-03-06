@@ -7,6 +7,8 @@
      filter: blur(120px);
      opacity: 0.5;
      z-index: -1;
+     width: 100vw;
+     height: 100vh;
  }
 
  @keyframes brilho {
@@ -17,6 +19,6 @@
 
      to {
          transform: scale(1.2);
-            transform: translateY(500px);
+         transform: translateY(500px);
      }
  }
