@@ -12,7 +12,7 @@ export function Layout({ children }: props) {
         <div>
             <div className="w-screen h-screen flex overflow-hidden">
                 <MenuSlider />
-                <div className="w-screen h-screen flex flex-col items-center" >
+                <div className="w-screen max-h-screen h-screen flex flex-col items-center" >
                     <TopBar />
                     {children}
                 </div>

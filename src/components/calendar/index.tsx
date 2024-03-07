@@ -5,6 +5,10 @@ import { CaretLeft, CaretRight, Funnel } from '@phosphor-icons/react';
 import Mensal from './visualizacao/mensal';
 import Semanal from './visualizacao/semanal';
 import Diario from './visualizacao/diario';
+import { Button } from '../ui/button';
+import { Input } from '../ui/input';
+import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
+import { ScrollArea } from '../ui/scroll-area';
 
 type Visualizacao = 'mensal' | 'semanal' | 'diario';
 
@@ -87,57 +91,64 @@ const Calendario = () => {
     }, []);
 
     return (
-        <div className="bg-gray-90 backdrop-filter backdrop-blur-md bg-opacity-70 border border-white border-opacity-30 p-8 rounded-lg w-5/6 h-5/6 mt-20">
-            <div className='header flex items-center justify-between mb-8'>
-                <div className='navegacao flex items-center w-full justify-center mb-8'>
-                    <button onClick={retroceder} className='mr-2'>
-                        <CaretLeft size={6} />
-                    </button>
-                    <span className='diaMes text-lg font-bold'>{mesDia.charAt(0).toUpperCase() + mesDia.slice(1)}</span>
-                    <button onClick={avancar} className='ml-2'>
-                        <CaretRight size={6} />
-                    </button>
-                </div>
-                <div className='botao-hoje flex items-center justify-center bg-green-500 text-white rounded-full px-4 py-2 mb-4'>
-                    <button onClick={irParaDiaAtual}>Hoje</button>
+        <div className="flex flex-col m-10 p-5 w-5/6 h-4.4/5 border border-white border-opacity-30 rounded-2xl ">
+            <div className='flex items-center justify-between'>
+                <div className='flex p-2 items-center w-full justify-center mb-8 bg-rgba(36, 36, 36, 0.985) backdrop-filter backdrop-blur-md bg-opacity-70 border border-white border-opacity-30 rounded-full '>
+                    <div className='right-0 left-0 flex items-center justify-between w-full'>
+                        <div></div>
+                        <div className='flex gap-10'>
+                            <button onClick={retroceder}>
+                                <CaretLeft size={30} />
+                            </button>
+                            <span className='diaMes text-lg font-bold'>{mesDia.charAt(0).toUpperCase() + mesDia.slice(1)}</span>
+                            <button onClick={avancar}>
+                                <CaretRight size={30} />
+                            </button>
+                        </div>
+                        <div>
+                            <Button className=' flex items-center justify-center px-4 py-2 rounded-full' onClick={irParaDiaAtual}>Hoje</Button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div className='visualizacao mb-4 flex justify-center space-x-4'>
+            <div className=' mb-4 flex justify-center space-x-4'>
                 <button className={`text-white bg-transparent border-none cursor-pointer rounded-full font-size-14 h-full w-32 focus:outline-none focus:ring focus:border-blue-300 ${vizualizacao === 'mensal' ? 'text-green-500 bg-green-200' : ''}`} onClick={() => mudarVisualizacao('mensal')}>Mensal</button>
                 <button className={`text-white bg-transparent border-none cursor-pointer rounded-full font-size-14 h-full w-32 focus:outline-none focus:ring focus:border-blue-300 ${vizualizacao === 'semanal' ? 'text-green-500 bg-green-200' : ''}`} onClick={() => mudarVisualizacao('semanal')}>Semanal</button>
                 <button className={`text-white bg-transparent border-none cursor-pointer rounded-full font-size-14 h-full w-32 focus:outline-none focus:ring focus:border-blue-300 ${vizualizacao === 'diario' ? 'text-green-500 bg-green-200' : ''}`} onClick={() => mudarVisualizacao('diario')}>Diário</button>
-            </div>
-            <div className="funil flex items-center justify-end">
-                <div className='iconeFiltro cursor-pointer' onClick={onHoverFilterHandler}>
-                    <Funnel size={6} />
+                <div className="funil flex items-center justify-center">
+                    <Popover>
+                        <PopoverTrigger asChild>
+                            <Funnel size={30} onClick={onHoverFilterHandler} className='cursor-pointer' />
+                        </PopoverTrigger>
+                        <PopoverContent className="flex text-center items-center flex-row justify-center text-center w-72 h-72 top-12 right-16 bg-opacity-90 backdrop-blur-md border border-white border-opacity-30 shadow-lg rounded-2xl">
+                            <div>
+                                <label className='text-white'>Inicio:</label>
+                                <Input
+                                    type='time'
+                                    placeholder="00:00"
+                                    value={startHour}
+                                    onChange={handleStartHourChange}
+                                    className='flex itens-center text-center justify-center border-1 border-white rounded-full h-10 px-4 text-white bg-transparent'
+                                />
+                                <label className='text-white'>Fim:</label>
+                                <Input
+                                    type='time'
+                                    placeholder="00:00"
+                                    value={endHour}
+                                    onChange={handleEndHourChange}
+                                    className='flex itens-center justborder-1 border-white rounded-full h-10 px-4 text-white bg-transparent'
+                                />
+                            </div>
+                        </PopoverContent>
+                    </Popover>
                 </div>
-                {onHoverFilter && <div className="modalFiltro absolute flex items-center flex-row justify-center text-center w-72 h-72 top-12 right-16 bg-opacity-90 backdrop-blur-md border border-white border-opacity-30 shadow-lg rounded-2xl">
-                    <div className='inputHoras'>
-                        <label className='text-white'>Inicio:</label>
-                        <InputMask
-                            mask="99:99"
-                            placeholder="00:00"
-                            value={startHour}
-                            onChange={handleStartHourChange}
-                            className='inputHora border-1 border-white rounded-full h-10 px-4 text-white bg-transparent'
-                        />
-                        <label className='text-white'>Fim:</label>
-                        <InputMask
-                            mask="99:99"
-                            placeholder="00:00"
-                            value={endHour}
-                            onChange={handleEndHourChange}
-                            className='inputHora border-1 border-white rounded-full h-10 px-4 text-white bg-transparent'
-                        />
-                    </div>
-                </div>}
             </div>
-            <div className='dashboard-calendario overflow-auto'>
+            <ScrollArea className='flex p-5'>
                 {vizualizacao === 'mensal' && <Mensal semanasDoMes={semanasDoMes} currentDate={currentDate} />}
                 {vizualizacao === 'semanal' && <Semanal currentDate={currentDate} />}
                 {vizualizacao === 'diario' && <Diario currentDate={currentDate} timeInterval={dateRange} />}
-            </div>
-        </div>
+            </ScrollArea>
+        </div >
     );
 };
 
