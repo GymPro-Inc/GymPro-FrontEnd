@@ -33,9 +33,10 @@ module.exports = {
         "5/12": "41.666667%",
         "7/12": "58.333333%",
         "11/12": "91.666667%",
-        "4.4/5": "88%",
+        "4.4/5": "85%",
       },
       colors: {
+        "primary": "#88B702",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

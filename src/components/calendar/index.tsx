@@ -91,7 +91,7 @@ const Calendario = () => {
     }, []);
 
     return (
-        <div className="flex flex-col m-10 p-5 w-5/6 h-4.4/5 border border-white border-opacity-30 rounded-2xl ">
+        <div className="flex flex-col m-10 p-5 w-5/6 h-4.4/5 max-h-screen border border-white border-opacity-30 rounded-2xl ">
             <div className='flex items-center justify-between'>
                 <div className='flex p-2 items-center w-full justify-center mb-8 bg-rgba(36, 36, 36, 0.985) backdrop-filter backdrop-blur-md bg-opacity-70 border border-white border-opacity-30 rounded-full '>
                     <div className='right-0 left-0 flex items-center justify-between w-full'>
@@ -112,9 +112,9 @@ const Calendario = () => {
                 </div>
             </div>
             <div className=' mb-4 flex justify-center space-x-4'>
-                <button className={`text-white bg-transparent border-none cursor-pointer rounded-full font-size-14 h-full w-32 focus:outline-none focus:ring focus:border-blue-300 ${vizualizacao === 'mensal' ? 'text-green-500 bg-green-200' : ''}`} onClick={() => mudarVisualizacao('mensal')}>Mensal</button>
-                <button className={`text-white bg-transparent border-none cursor-pointer rounded-full font-size-14 h-full w-32 focus:outline-none focus:ring focus:border-blue-300 ${vizualizacao === 'semanal' ? 'text-green-500 bg-green-200' : ''}`} onClick={() => mudarVisualizacao('semanal')}>Semanal</button>
-                <button className={`text-white bg-transparent border-none cursor-pointer rounded-full font-size-14 h-full w-32 focus:outline-none focus:ring focus:border-blue-300 ${vizualizacao === 'diario' ? 'text-green-500 bg-green-200' : ''}`} onClick={() => mudarVisualizacao('diario')}>Diário</button>
+                <button className={`text-white bg-transparent border-none cursor-pointer rounded-full font-size-14 h-full w-32 focus:outline-none ${vizualizacao === 'mensal' ? 'text-[#88B702]' : ''}`} onClick={() => mudarVisualizacao('mensal')}>Mensal</button>
+                <button className={`text-white bg-transparent border-none cursor-pointer rounded-full font-size-14 h-full w-32 focus:outline-none ${vizualizacao === 'semanal' ? 'text-[#88B702]' : ''}`} onClick={() => mudarVisualizacao('semanal')}>Semanal</button>
+                <button className={`text-white bg-transparent border-none cursor-pointer rounded-full font-size-14 h-full w-32 focus:outline-none ${vizualizacao === 'diario' ? 'text-[#88B702]' : ''}`} onClick={() => mudarVisualizacao('diario')}>Diário</button>
                 <div className="funil flex items-center justify-center">
                     <Popover>
                         <PopoverTrigger asChild>
@@ -143,7 +143,7 @@ const Calendario = () => {
                     </Popover>
                 </div>
             </div>
-            <ScrollArea className='flex p-5'>
+            <ScrollArea className='flex p-5 h-100'>
                 {vizualizacao === 'mensal' && <Mensal semanasDoMes={semanasDoMes} currentDate={currentDate} />}
                 {vizualizacao === 'semanal' && <Semanal currentDate={currentDate} />}
                 {vizualizacao === 'diario' && <Diario currentDate={currentDate} timeInterval={dateRange} />}
