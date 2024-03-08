@@ -27,9 +27,9 @@ const Mensal = ({ semanasDoMes, currentDate }: MensalProps) => {
               key={indiceDia}
               onClick={() => handleDayClick(dia)}
               className={`border text-center h-full flex flex-col justify-between cursor-pointer
+                ${isToday(dia) ? 'bg-[#88B702]' : ''}
                 ${isSameMonth(dia, currentDate) ? 'bg-white hover:border-[#88B702] border-2' : 'text-gray-300 border-gray-300 font-bold text-gray-300'}
                 ${isSameWeek(dia, currentDate) ? 'semana atual' : ''}
-                ${isToday(dia) ? 'bg-[#88B702]' : ''}
                 rounded-2xl text-black gap-[100px] `}
             >
               <span className="text-xl">{format(dia, 'dd')}</span>

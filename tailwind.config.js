@@ -36,7 +36,7 @@ module.exports = {
         "4.4/5": "85%",
       },
       colors: {
-        "primary": "#88B702",
+        "personalizada": "#88B702",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
