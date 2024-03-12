@@ -112,31 +112,31 @@ const Calendario = () => {
                 </div>
             </div>
             <div className=' mb-4 flex justify-center space-x-4'>
-                <button className={`bg-transparent border-none cursor-pointer rounded-full font-size-14 h-full w-32 focus:outline-none ${vizualizacao === 'mensal' ? 'text-[#88B702]' : 'text-white'}`} onClick={() => mudarVisualizacao('mensal')}>Mensal</button>
-                <button className={`bg-transparent border-none cursor-pointer rounded-full font-size-14 h-full w-32 focus:outline-none ${vizualizacao === 'semanal' ? 'text-[#88B702]' : 'text-white'}`} onClick={() => mudarVisualizacao('semanal')}>Semanal</button>
-                <button className={`bg-transparent border-none cursor-pointer rounded-full font-size-14 h-full w-32 focus:outline-none ${vizualizacao === 'diario' ? 'text-[#88B702]' : 'text-white'}`} onClick={() => mudarVisualizacao('diario')}>Diário</button>
+                <button className={`bg-transparent border-none cursor-pointer rounded-full font-size-14 h-full w-32 focus:outline-none ${vizualizacao === 'mensal' ? 'text-200' : 'text-white'}`} onClick={() => mudarVisualizacao('mensal')}>Mensal</button>
+                <button className={`bg-transparent border-none cursor-pointer rounded-full font-size-14 h-full w-32 focus:outline-none ${vizualizacao === 'semanal' ? 'text-200' : 'text-white'}`} onClick={() => mudarVisualizacao('semanal')}>Semanal</button>
+                <button className={`bg-transparent border-none cursor-pointer rounded-full font-size-14 h-full w-32 focus:outline-none ${vizualizacao === 'diario' ? 'text-200' : 'text-white'}`} onClick={() => mudarVisualizacao('diario')}>Diário</button>
                 <div className="funil flex items-center justify-center">
                     <Popover>
                         <PopoverTrigger asChild>
                             <Funnel size={30} onClick={onHoverFilterHandler} className='cursor-pointer' />
                         </PopoverTrigger>
-                        <PopoverContent className="flex text-center items-center flex-row justify-center text-center w-72 h-72 top-12 right-16 bg-opacity-90 backdrop-blur-md border border-white border-opacity-30 shadow-lg rounded-2xl">
+                        <PopoverContent className="flex text-center items-center flex-row justify-center text-center w-72 h-72 top-12 right-16 bg-opacity-90 backdrop-blur-md border border-200 border-opacity-30 shadow-lg rounded-2xl">
                             <div>
-                                <label className='text-white'>Inicio:</label>
+                                <label className='text-200 justify-center text-center items-center'>Inicio:</label>
                                 <Input
                                     type='time'
                                     placeholder="00:00"
                                     value={startHour}
                                     onChange={handleStartHourChange}
-                                    className='flex itens-center text-center justify-center border-1 border-white rounded-full h-10 px-4 text-white bg-transparent'
+                                    className='flex itens-center text-center justify-center border-[#30BFB1] rounded-full h-10 px-4 text-200 bg-transparent'
                                 />
-                                <label className='text-white'>Fim:</label>
+                                <label className='text-200'>Fim:</label>
                                 <Input
                                     type='time'
                                     placeholder="00:00"
                                     value={endHour}
                                     onChange={handleEndHourChange}
-                                    className='flex itens-center justborder-1 border-white rounded-full h-10 px-4 text-white bg-transparent'
+                                    className='flex itens-center hover:border-[#30BFB1] border-[#30BFB1] rounded-full h-10 px-4 text-200 bg-transparent'
                                 />
                             </div>
                         </PopoverContent>

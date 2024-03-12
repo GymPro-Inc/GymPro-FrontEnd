@@ -33,17 +33,21 @@ module.exports = {
         "5/12": "41.666667%",
         "7/12": "58.333333%",
         "11/12": "91.666667%",
-        "4.4/5": "85%",
+        "4.4/5": "85%"
       },
       colors: {
-        "personalizada": "#88B702",
+        "200": "#30BFB1",
+        "300": "#238C82",
+        "400": "#165953",
+        "black": "#0D0D0D",
+        "white": "#F2F2F2",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#88B702",
+          DEFAULT: "#238C82",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {

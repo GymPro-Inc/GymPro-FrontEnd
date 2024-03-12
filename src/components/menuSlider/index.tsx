@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './style.css';
-import { House, Barbell, Gear, SignOut, CurrencyCircleDollar, List, Lockers, Student, Briefcase, Calendar } from "@phosphor-icons/react";
+import { House, Barbell, Gear, SignOut, CurrencyCircleDollar, List, Lockers, Student, Briefcase, Calendar, Users, Warehouse, MapPinLine, MapPin } from "@phosphor-icons/react";
 import { MenuItem } from './menuItem';
 import { MenuItensProps } from './menuItem/index';
 import { useAuth } from '../../hooks/useAuth';
@@ -18,11 +18,11 @@ const MenuSlider = () => {
     const url = window.location.pathname;
     if (url === '/') {
       setIsSelected(1);
-    } else if (url === '/treinos') {
+    } else if (url === '/clientes') {
       setIsSelected(3);
     } else if (url === '/calendario') {
       setIsSelected(4);
-    } else if (url === '/alunos') {
+    } else if (url === '/locais') {
       setIsSelected(5);
     } else if (url === '/financeiro') {
       setIsSelected(6);
@@ -73,11 +73,11 @@ const MenuSlider = () => {
       handIsSelected: handIsSelected,
     }, {
       id: 3,
-      link: '/treinos',
+      link: '/clientes',
       isHovered: isHovered,
       isSelected: isSelected,
-      icon: <Barbell size={32} weight="fill" />,
-      text: 'Treinos',
+      icon: <Users size={32} weight="fill" />,
+      text: 'Clientes',
       className: 'MenuItemContainer',
       handIsSelected: handIsSelected,
     }, {
@@ -91,11 +91,11 @@ const MenuSlider = () => {
       handIsSelected: handIsSelected,
     }, {
       id: 5,
-      link: '/alunos',
+      link: '/locais',
       isHovered: isHovered,
       isSelected: isSelected,
-      icon: <Student size={32} weight="fill" />,
-      text: 'Alunos',
+      icon: <MapPin    size={32} weight="fill" />,
+      text: 'Locais',
       className: 'MenuItemContainer',
       handIsSelected: handIsSelected,
     }, {
@@ -125,7 +125,7 @@ const MenuSlider = () => {
       style={{ width: isHovered ? 350 : 60, transition: "ease-in-out 0.5s" }}
       ref={menuRef}
     >
-      <button className="menu-slider-header" onClick={handleMouseEnter} style={{ color: isHovered ? "#88B702" : 'white', transition: "ease-in-out 0.5s", filter: !isHovered ? "drop-shadow(0 0 10px #fff)" : "drop-shadow(0 0 10px #88B702) drop-shadow(0 0 20px #88B702)" }}>
+      <button className="menu-slider-header" onClick={handleMouseEnter} style={{ color: isHovered ? "#30BFB1" : 'white', transition: "ease-in-out 0.5s", filter: !isHovered ? "drop-shadow(0 0 10px #fff)" : "drop-shadow(0 0 10px #30BFB1) drop-shadow(0 0 20px #30BFB1)" }}>
         <List size={32} weight="fill" />
       </button>
       <div>

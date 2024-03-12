@@ -15,20 +15,19 @@ const Semanal = ({ currentDate }: SemanalProps) => {
   }
 
   return (
-    <div className="flex justify-center items-center h-full w-full">
-      <div className="flex h-full gap-20 w-full">
+    <div className="flex justify-center items-center h-100 w-full">
+      <div className="flex gap-7 h-[35.9rem] w-full">
         {diasDaSemana.map((dia, indiceDia) => (
           <div
             key={indiceDia}
-            className={`p-10 border text-center h-full w-90% flex flex-col justify-between cursor-pointer
-              ${isSameWeek(dia, currentDate) ? 'bg-white hover:border-[#88B702] border-2 semana-atual-semanal' : 'text-gray-300 border-gray-300 font-bold text-gray-300 outra-semana'}
-              ${isToday(dia) ? 'bg-[#88b702] hoje-semanal' : ''} rounded-2xl text-black transition ease-in-out duration-300`}
+            className={` h-[100%] w-[180px] border border-gray-black rounded-2xl flex flex-col justify-center items-center cursor-pointer content-center justify-between p-3
+              ${isToday(dia) ? "bg-200 text-black border-2 font-bold hover:border-200 hover:border-4 hover:bg-white hover:text-200 content-center items-center" : "bg-white text-black hover:border-200 hover:text-200 border-2 content-center items-center hover:border-4"}`}  
           >
-            {/* Adicione uma verificação para garantir que a data seja válida antes de formatar */}
             {dia ? (
               <>
                 <span className="text-xl font-bold">{format(dia, 'dd')}</span>
-                <span className="text-sm font-light">{format(dia, 'EEEE', { locale: pt })}</span>
+                {/* <div className={`h-1 w-20 ${isToday(dia) ? "bg-white" : "bg-black"}  rounded-full`}></div> */}
+                <span className="font-bold">{format(dia, 'EEEE', { locale: pt })}</span>
               </>
             ) : (
               <span>Data Inválida</span>
