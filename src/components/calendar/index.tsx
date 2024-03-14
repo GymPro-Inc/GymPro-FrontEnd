@@ -91,7 +91,7 @@ const Calendario = () => {
     }, []);
 
     return (
-        <div className="flex flex-col m-10 p-5 w-5/6 h-4.4/5 max-h-screen border border-white border-opacity-30 rounded-2xl ">
+        <div className="flex flex-col m-10 p-5 w-[70%] h-[85%] max-h-screen border border-white border-opacity-30 rounded-2xl ">
             <div className='flex items-center justify-between'>
                 <div className='flex p-2 items-center w-full justify-center mb-8 bg-rgba(36, 36, 36, 0.985) backdrop-filter backdrop-blur-md bg-opacity-70 border border-white border-opacity-30 rounded-full '>
                     <div className='right-0 left-0 flex items-center justify-between w-full'>
@@ -112,9 +112,9 @@ const Calendario = () => {
                 </div>
             </div>
             <div className=' mb-4 flex justify-center space-x-4'>
-                <button className={`bg-transparent border-none cursor-pointer rounded-full font-size-14 h-full w-32 focus:outline-none ${vizualizacao === 'mensal' ? 'text-200' : 'text-white'}`} onClick={() => mudarVisualizacao('mensal')}>Mensal</button>
-                <button className={`bg-transparent border-none cursor-pointer rounded-full font-size-14 h-full w-32 focus:outline-none ${vizualizacao === 'semanal' ? 'text-200' : 'text-white'}`} onClick={() => mudarVisualizacao('semanal')}>Semanal</button>
-                <button className={`bg-transparent border-none cursor-pointer rounded-full font-size-14 h-full w-32 focus:outline-none ${vizualizacao === 'diario' ? 'text-200' : 'text-white'}`} onClick={() => mudarVisualizacao('diario')}>Diário</button>
+                <button className={`bg-transparent border-none cursor-pointer rounded-full font-bold font-size-14 h-full w-32 focus:outline-none ${vizualizacao === 'mensal' ? 'text-200' : 'text-white'}`} onClick={() => mudarVisualizacao('mensal')}>Mensal</button>
+                <button className={`bg-transparent border-none cursor-pointer rounded-full font-bold font-size-14 h-full w-32 focus:outline-none ${vizualizacao === 'semanal' ? 'text-200' : 'text-white'}`} onClick={() => mudarVisualizacao('semanal')}>Semanal</button>
+                <button className={`bg-transparent border-none cursor-pointer rounded-full font-bold font-size-14 h-full w-32 focus:outline-none ${vizualizacao === 'diario' ? 'text-200' : 'text-white'}`} onClick={() => mudarVisualizacao('diario')}>Diário</button>
                 <div className="funil flex items-center justify-center">
                     <Popover>
                         <PopoverTrigger asChild>
@@ -128,7 +128,7 @@ const Calendario = () => {
                                     placeholder="00:00"
                                     value={startHour}
                                     onChange={handleStartHourChange}
-                                    className='flex itens-center text-center justify-center border-[#30BFB1] rounded-full h-10 px-4 text-200 bg-transparent'
+                                    className='flex itens-center text-center justify-center border-[#03bb85] rounded-full h-10 px-4 text-200 bg-transparent'
                                 />
                                 <label className='text-200'>Fim:</label>
                                 <Input
@@ -136,14 +136,14 @@ const Calendario = () => {
                                     placeholder="00:00"
                                     value={endHour}
                                     onChange={handleEndHourChange}
-                                    className='flex itens-center hover:border-[#30BFB1] border-[#30BFB1] rounded-full h-10 px-4 text-200 bg-transparent'
+                                    className='flex itens-center hover:border-[#03bb85] border-[#03bb85] rounded-full h-10 px-4 text-200 bg-transparent'
                                 />
                             </div>
                         </PopoverContent>
                     </Popover>
                 </div>
             </div>
-            <ScrollArea className='flex p-5 h-100'>
+            <ScrollArea onBlur={(e) => e.preventDefault()} className='flex p-5 h-[100%]'>
                 {vizualizacao === 'mensal' && <Mensal semanasDoMes={semanasDoMes} currentDate={currentDate} />}
                 {vizualizacao === 'semanal' && <Semanal currentDate={currentDate} />}
                 {vizualizacao === 'diario' && <Diario currentDate={currentDate} timeInterval={dateRange} />}

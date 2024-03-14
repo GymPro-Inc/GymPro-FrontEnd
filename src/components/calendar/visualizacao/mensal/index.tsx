@@ -18,9 +18,9 @@ const Mensal = ({ semanasDoMes, currentDate }: MensalProps) => {
 
   return (
     <Dialog>
-      <div className="grid grid-cols-1 items-center h-4/5 gap-5">
+      <div className="grid grid-cols-1 items-center h-[80%] gap-4">
         {semanasDoMes.map((semana, indiceSemana) => (
-          <div key={indiceSemana} className="grid grid-cols-7 gap-5">
+          <div key={indiceSemana} className="grid grid-cols-7 gap-4">
             {eachDayOfInterval({
               start: semana,
               end: new Date(semana.getFullYear(), semana.getMonth(), semana.getDate() + 6),
@@ -29,8 +29,8 @@ const Mensal = ({ semanasDoMes, currentDate }: MensalProps) => {
                 <div
                   key={indiceDia}
                   onClick={() => handleDayClick(dia)}
-                  className={`border p-3 text-center h-full flex flex-col justify-between cursor-pointer
-                ${isSameMonth(dia, currentDate) ? ' hover:border-200 hover:text-200 border-2' : 'text-gray-300 border-gray-300 font-bold text-gray-300'}
+                  className={`border text-center h-full flex flex-col justify-between 
+                ${isSameMonth(dia, currentDate) ? ' hover:border-200 hover:text-200 border-2 cursor-pointer' : 'text-gray-300 border-gray-300 font-bold text-gray-500 cursor-not-allowed '}
                 ${isToday(dia) ? 'bg-200 text-white hover:bg-white' : 'bg-white'}
                 rounded-2xl text-black gap-[100px] `}
                 >
@@ -41,7 +41,7 @@ const Mensal = ({ semanasDoMes, currentDate }: MensalProps) => {
             ))}
           </div>
         ))}
-        {selectedDate && <Evento date={selectedDate} onClose={() => setSelectedDate(null)} />}
+        {selectedDate && isSameMonth(selectedDate, currentDate) && <Evento date={selectedDate} onClose={() => setSelectedDate(null)} />}
       </div>
     </Dialog>
   );

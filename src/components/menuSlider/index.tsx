@@ -125,7 +125,7 @@ const MenuSlider = () => {
       style={{ width: isHovered ? 350 : 60, transition: "ease-in-out 0.5s" }}
       ref={menuRef}
     >
-      <button className="menu-slider-header" onClick={handleMouseEnter} style={{ color: isHovered ? "#30BFB1" : 'white', transition: "ease-in-out 0.5s", filter: !isHovered ? "drop-shadow(0 0 10px #fff)" : "drop-shadow(0 0 10px #30BFB1) drop-shadow(0 0 20px #30BFB1)" }}>
+      <button className="menu-slider-header" onClick={handleMouseEnter} style={{ color: isHovered ? "#03bb85" : 'white', transition: "ease-in-out 0.5s", filter: !isHovered ? "drop-shadow(0 0 10px #fff)" : "drop-shadow(0 0 10px #03bb85) drop-shadow(0 0 20px #03bb85)" }}>
         <List size={32} weight="fill" />
       </button>
       <div>

@@ -36,7 +36,7 @@ module.exports = {
         "4.4/5": "85%"
       },
       colors: {
-        "200": "#30BFB1",
+        "200": "#03bb85",
         "300": "#238C82",
         "400": "#165953",
         "black": "#0D0D0D",
@@ -47,7 +47,7 @@ module.exports = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#238C82",
+          DEFAULT: "#03bb85",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
