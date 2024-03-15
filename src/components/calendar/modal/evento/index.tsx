@@ -36,7 +36,7 @@ const Evento = ({ date , onClose}: EventoProps) => {
                 <ResizablePanelGroup direction="horizontal">
                     <ResizablePanel className='p-5 w-max max-w-[75%] min-w-[45%]'>
                         <DialogHeader>
-                            <DialogTitle>Eventos</DialogTitle>
+                            <DialogTitle>Cadastro</DialogTitle>
                             <DialogDescription>
                                 Cadastre eventos para o dia {format(date, 'dd/MM/yyyy', { locale: pt })}
                             </DialogDescription>
@@ -116,7 +116,9 @@ const Evento = ({ date , onClose}: EventoProps) => {
                         </DialogFooter>
                     </ResizablePanel>
                     <ResizableHandle withHandle />
-                    <ResizablePanel defaultSize={10} className='p-5 max-w-[55%] min-w-[25%]'>Two</ResizablePanel>
+                    <ResizablePanel defaultSize={10} className='p-5 max-w-[55%] min-w-[25%]'>
+                        Eventos
+                    </ResizablePanel>
                 </ResizablePanelGroup>
             </DialogContent>
     );
