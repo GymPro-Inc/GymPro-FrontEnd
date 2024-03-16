@@ -5,6 +5,7 @@ import LoadingScreen from "./view/loading/Loading";
 import Login from "./view/login";
 import { Layout } from "./view/layout";
 import Calendario from "./components/calendar";
+import Cliente from "./view/cliente";
 
 function MainRoutes() {
 
@@ -40,6 +41,7 @@ function MainRoutes() {
     <Layout>
       <Routes>
         <Route path="/calendario" element={<Calendario />} />
+        <Route path="/clientes" element={<Cliente/>} />
       </Routes>
     </Layout>
   )

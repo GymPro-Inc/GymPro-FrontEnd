@@ -1,4 +1,3 @@
-import BackgroundFlutuante from "@/components/BackgroundFlutuante/BackgroundFlutuante"
 import MenuSlider from "@/components/menuSlider"
 import TopBar from "@/components/topBar"
 import { ReactNode } from "react"
