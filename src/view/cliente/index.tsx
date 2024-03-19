@@ -71,6 +71,42 @@ const data: Payment[] = [
     status: "failed",
     email: "carmella@hotmail.com",
   },
+  {
+    id: "6t8t5b7e",
+    amount: 138,
+    status: "pending",
+    email: "teste1@gmail.com",
+  },
+  {
+    id: "1g9t3b7e",
+    amount: 138,
+    status: "pending",
+    email: "teste2@gmail.com",
+  },
+  {
+    id: "2g9t4b8e",
+    amount: 200,
+    status: "processing",
+    email: "teste3@gmail.com",
+    },
+    {
+    id: "3g9t5b9e",
+    amount: 300,
+    status: "success",
+    email: "teste4@gmail.com",
+    },
+    {
+    id: "4g9t6b0e",
+    amount: 400,
+    status: "failed",
+    email: "teste5@gmail.com",
+    },
+    {
+    id: "5g9t7b1e",
+    amount: 500,
+    status: "pending",
+    email: "teste6@gmail.com",
+    },
 ]
 
 export type Payment = {
@@ -200,16 +236,20 @@ export default function Cliente() {
   })
 
   return (
-    <div className="w-full">
-      <div className="flex items-center py-4">
+    <div className="w-[95%] h-[95%]">
+      <h1 className="text-2xl font-bold mb-[40px]">Clientes</h1>
+      <div className="flex items-center pb-[50px]">
         <Input
-          placeholder="Filter emails..."
+          placeholder="Pesquise clientes"
           value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
             table.getColumn("email")?.setFilterValue(event.target.value)
           }
-          className="max-w-sm"
+          className="max-w-[40%]"
         />
+        <Button className="">
+          Cadastrar 
+        </Button>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto">
@@ -237,8 +277,8 @@ export default function Cliente() {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <div className="rounded-md border">
-        <Table>
+      <div className="rounded-md border top-2">
+        <Table className="">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
