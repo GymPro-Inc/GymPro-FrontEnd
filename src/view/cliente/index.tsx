@@ -39,6 +39,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 const data: Payment[] = [
   {
@@ -88,25 +89,25 @@ const data: Payment[] = [
     amount: 200,
     status: "processing",
     email: "teste3@gmail.com",
-    },
-    {
+  },
+  {
     id: "3g9t5b9e",
     amount: 300,
     status: "success",
     email: "teste4@gmail.com",
-    },
-    {
+  },
+  {
     id: "4g9t6b0e",
     amount: 400,
     status: "failed",
     email: "teste5@gmail.com",
-    },
-    {
+  },
+  {
     id: "5g9t7b1e",
     amount: 500,
     status: "pending",
     email: "teste6@gmail.com",
-    },
+  },
 ]
 
 export type Payment = {
@@ -247,8 +248,8 @@ export default function Cliente() {
           }
           className="max-w-[40%]"
         />
-        <Button className="">
-          Cadastrar 
+        <Button className="ml-4">
+          Cadastrar
         </Button>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -278,54 +279,57 @@ export default function Cliente() {
         </DropdownMenu>
       </div>
       <div className="rounded-md border top-2">
-        <Table className="">
-          <TableHeader>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => {
-                  return (
-                    <TableHead key={header.id}>
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
+      <ScrollArea onBlur={(e) => e.preventDefault()} className='flex p-5 h-[56vh]'>
+          <Table className="">
+            <TableHeader className="sticky top-0 bg-secondary z-20">
+              {table.getHeaderGroups().map((headerGroup) => (
+                <TableRow key={headerGroup.id}>
+                  {headerGroup.headers.map((header) => {
+                    return (
+                      <TableHead key={header.id}>
+                        {header.isPlaceholder
+                          ? null
+                          : flexRender(
                             header.column.columnDef.header,
                             header.getContext()
                           )}
-                    </TableHead>
-                  )
-                })}
-              </TableRow>
-            ))}
-          </TableHeader>
-          <TableBody>
-            {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
-                >
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </TableCell>
-                  ))}
+                      </TableHead>
+                    )
+                  })}
                 </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell
-                  colSpan={columns.length}
-                  className="h-24 text-center"
-                >
-                  No results.
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
+              ))}
+            </TableHeader>
+            <TableBody className="">
+              {table.getRowModel().rows?.length ? (
+                table.getRowModel().rows.map((row) => (
+                  <TableRow
+                    key={row.id}
+                    data-state={row.getIsSelected() && "selected"}
+                    className="sticky top-0"
+                  >
+                    {row.getVisibleCells().map((cell) => (
+                      <TableCell key={cell.id}>
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                        )}
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell
+                    colSpan={columns.length}
+                    className="h-24 text-center"
+                  >
+                    No results.
+                  </TableCell>
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+        </ScrollArea>
       </div>
       <div className="flex items-center justify-end space-x-2 py-4">
         <div className="flex-1 text-sm text-muted-foreground">

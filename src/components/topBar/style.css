@@ -9,6 +9,10 @@
     min-height: 60px;
 }
 
+.input-outline-topbar:focus  input:focus{
+    outline: none;
+}
+
 .imagem-perfil{
     border-radius: 100%;
     opacity: 1 ;

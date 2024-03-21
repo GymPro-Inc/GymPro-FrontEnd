@@ -20,7 +20,7 @@ const TopBar = () => {
                 <Input
                     type="text"
                     placeholder="Pesquisar..."
-                    className="border-none outline-0 outline-transparent "
+                    className="border-none focus-visible:ring-0"
                 />
                 <MagnifyingGlass className="icon-search" />
             </div>
